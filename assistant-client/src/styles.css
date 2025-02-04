@@ -1,0 +1,56 @@
+:root {
+  /* Background Colors */
+  --background-body: #fdf6e3; /* Soft warm sand/beige for a light summer feel */
+  --background-section: #2eb5e0; /* Refreshing ocean blue for sections */
+  --background-gradient-start: #feca57; /* Vibrant sunshine yellow */
+  --background-gradient-end: #00a8a8; /* Tropical teal for a beachy contrast */
+
+  /* Text Colors */
+  --text-primary: #2a2a2a; /* Deep charcoal for readability on light backgrounds */
+  --text-heading: #f97316; /* Bold sunset orange for vibrant headings */
+  --text-subheading: #ffb703; /* Warm golden yellow for friendly subheadings */
+  --text-link: #0088aa; /* Ocean blue for fresh, summery links */
+  --text-link-hover: #005f7a; /* Deeper sea blue for hover effect */
+
+  /* Accent Colors */
+  --accent-button: #feca57; /* Bright sun yellow for buttons */
+  --accent-button-hover: #f39c12; /* Warm golden-orange for hover */
+  --accent-button-text: #2a2a2a; /* Dark text for contrast on bright buttons */
+
+  /* Border and Shadow Colors */
+  --border-color: #f97316; /* Sunset orange for a warm accent */
+  --shadow-color: rgba(249, 115, 22, 0.3); /* Soft sunset glow for depth */
+  --shadow-color-light: rgba(255, 183, 3, 0.2); /* Gentle warm highlight */
+
+  /* Icon and Line Colors */
+  --icon-line: #00a8a8; /* Tropical teal for icons and dividers */
+}
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 700 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: var(--text-link);
+}
+a:hover {
+  color: var(--text-link-hover);
+}
+li {
+  list-style-type: none;
+}
+
+body {
+  font-family: "Noto Sans", serif;
+  font-optical-sizing: auto;
+  background-color: var(--background-body);
+  color: var(--text-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}

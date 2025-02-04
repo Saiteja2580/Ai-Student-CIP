@@ -1,0 +1,96 @@
+.std-content {
+  width: 100%;
+
+  color: var(--text-primary);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  min-height: 100vh;
+}
+
+main {
+  padding: 2rem;
+  border: 1px solid var(--accent-button-hover);
+}
+
+#sidebar {
+  height: 100vh;
+  padding: 2rem 0.5rem;
+  width: 250px;
+  border-right: 1px solid var(--accent-button-hover);
+  position: sticky;
+  top: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+#sidebar.collapsed {
+  width: 60px;
+  overflow: hidden;
+  /* padding: 5px; */
+}
+
+.collapsed a span,
+.collapsed li span {
+  display: none; /* Hide text but keep icons */
+}
+
+#toggle-btn.rotate {
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+
+#sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+
+#sidebar > ul > li:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 0.5rem;
+  .logo {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+}
+
+#sidebar a {
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem;
+  svg {
+    fill: var(--text-primary);
+  }
+}
+
+#sidebar a:hover {
+  background-color: var(--background-gradient-end);
+}
+#toggle-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+
+#toggle-btn:hover {
+  background-color: var(--background-gradient-end);
+}
+
+.logout {
+  cursor: pointer;
+  margin-top: auto;
+}
+
+main {
+  border: 1px solid var(--accent-button-hover);
+  margin: 1rem;
+  border-radius: 1rem;
+}

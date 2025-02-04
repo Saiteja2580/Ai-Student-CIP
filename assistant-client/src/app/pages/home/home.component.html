@@ -1,0 +1,104 @@
+<div class="home-component">
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-nav">
+      <div class="logo">
+        <img src="images/logo.png" alt="this is image" />
+      </div>
+      <nav class="nav-links">
+        <ul class="links">
+          <li><a href="">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#cta">Get Started</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      @if ((auth.isAuthenticated$ |async ) === false) {
+      <div class="login-btn">
+        <button (click)="onLogin()">Login</button>
+      </div>
+      }
+    </div>
+
+    <div class="hero-content">
+      <h1>Revolutionize Your Learning Experience with LearnPro</h1>
+      <p>An AI-Powered Assistant for Academic and Career Success.</p>
+      <div class="started-btns">
+        <button (click)="onLogin()">Get Started</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Section -->
+  <section id="features">
+    <h2>Why Choose LearnPro?</h2>
+    <div class="feature-section-cards">
+      <div class="feature">
+        <h3>Schedule Planning</h3>
+        <p>Seamlessly organize your academic schedule with reminders.</p>
+      </div>
+      <div class="feature">
+        <h3>Task Management</h3>
+        <p>Prioritize and track tasks for efficient completion.</p>
+      </div>
+      <div class="feature">
+        <h3>AI-Generated Quizzes</h3>
+        <p>Reinforce learning with tailored quizzes.</p>
+      </div>
+      <div class="feature">
+        <h3>Performance Analysis</h3>
+        <p>Gain insights into your strengths and areas of improvement.</p>
+      </div>
+      <div class="feature">
+        <h3>Resource Recommendations</h3>
+        <p>Access curated study materials.</p>
+      </div>
+      <div class="feature">
+        <h3>Chatbot Assistance</h3>
+        <p>Instant academic support at your fingertips.</p>
+      </div>
+      <div class="feature">
+        <h3>Career Guidance</h3>
+        <p>Get personalized advice for your future.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>What Makes Us Unique?</h2>
+    <p>
+      LearnPro combines academic management and career planning in one platform.
+      AI-driven features deliver personalized experiences tailored to individual
+      goals.
+    </p>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section id="cta">
+    <h2>Ready to Achieve Your Goals?</h2>
+    <p>
+      Join thousands of students transforming their academic journey with
+      LearnPro.
+    </p>
+    <button (click)="onLogin()">Sign Up Now</button>
+  </section>
+
+  <!-- Footer Section -->
+  <footer id="contact">
+    <p>saitejassp2580&#64;gmail.com</p>
+    <p>+91-9392887812</p>
+    <div>
+      <a href="https://www.instagram.com/karanamsai2580/" target="_blank"
+        ><i class="fa-brands fa-instagram"></i
+      ></a>
+      |
+      <a
+        href="https://www.linkedin.com/in/sai-teja-karanam-a7aab1290/"
+        target="_blank"
+        ><i class="fa-brands fa-linkedin"></i
+      ></a>
+    </div>
+  </footer>
+</div>
