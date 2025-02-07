@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { GenerateQuizDto } from './dto/generate-quiz.dto';
 import { GeminiService } from 'src/gemini/gemini.service';
+import { QuizResultDto } from './dto/quiz-result.dto';
 @Injectable()
 export class QuizService {
   constructor(private readonly geminiSerice: GeminiService) {}
@@ -15,17 +16,23 @@ export class QuizService {
   {
     "question": "Question text?",
     "options": ["Option A", "Option B", "Option C", "Option D"],
-    "answer": "Option A"
+    "answer": ["Option A","A"]
   }
   ]
+
+  Dont Change Respopnse Format
 `;
 
     const quiz = await this.geminiSerice.generateResponse(prompt);
-    console.log(quiz);
+    //console.log(quiz);
 
     return {
       topicName: topic.topicName,
       quiz,
     };
+  }
+
+  async submitQuiz(id, quizResult: QuizResultDto) {
+    return quizResult;
   }
 }

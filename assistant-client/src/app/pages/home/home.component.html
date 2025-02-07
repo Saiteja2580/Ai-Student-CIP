@@ -1,4 +1,4 @@
-<div class="home-component">
+<div class="home-component" #spinnner *ngIf="!isLoading; else spinner">
   <!-- Hero Section -->
   <section id="hero">
     <div class="hero-nav">
@@ -102,3 +102,7 @@
     </div>
   </footer>
 </div>
+
+<ng-template #spinner>
+  <app-spinner #spinner></app-spinner>
+</ng-template>

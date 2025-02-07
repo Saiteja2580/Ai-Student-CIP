@@ -61,30 +61,45 @@
     </form>
   </div>
   <div class="quiz-questions">
-    <!-- Display quiz questions only if quizStarted is true -->
-    @if (quizStarted) {
-    <div
-      *ngFor="let quiz of quizResponse.quiz; let i = index"
-      class="quiz-question"
+    <!-- Display quiz questions only if rted is true -->
+    <form
+      action=""
+      #quizFormTemp="ngForm"
+      (ngSubmit)="submitQuiz(quizFormTemp)"
+      class="ques-form"
     >
-      <p>{{ i + 1 }}. {{ quiz.question }}</p>
-      <div class="options">
-        <!-- Loop through options for the current quiz question -->
-        <div *ngFor="let option of quiz.options; let j = index" class="option">
-          <input
-            type="radio"
-            [id]="'opt' + i + '-' + j"
-            name="question{{ i }}"
-            [value]="option"
-          />
-          <label [for]="'opt' + i + '-' + j">{{ option }}</label>
+      @if (quizStarted) {
+      <div
+        *ngFor="let quiz of quizResponse.quiz; let i = index"
+        class="quiz-question"
+      >
+        <p>{{ i + 1 }}. {{ quiz.question }}</p>
+        <div class="options">
+          <!-- Loop through options for the current quiz question -->
+          <div
+            *ngFor="let option of quiz.options; let j = index"
+            class="option"
+          >
+            <input
+              type="radio"
+              [id]="'opt' + i + '-' + j"
+              name="answer{{ i }}"
+              [value]="option"
+              [(ngModel)]="quizData.answers[i]"
+              #answerInput="ngModel"
+              required
+            />
+            <label [for]="'opt' + i + '-' + j">{{ option }}</label>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="submit-btn">
-      <button class="gen-btn" (click)="submitQuiz()">Submit Quiz</button>
-    </div>
-    }
+      <div class="submit-btn">
+        <button class="gen-btn" >
+          Submit Quiz
+        </button>
+      </div>
+      }
+    </form>
   </div>
 </div>
 

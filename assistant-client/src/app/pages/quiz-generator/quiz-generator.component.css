@@ -66,6 +66,11 @@ option {
   flex-direction: column;
   gap: 1rem;
 }
+.ques-form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .quiz-question {
   display: flex;
@@ -79,6 +84,7 @@ option {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
 }
 
 .option {

@@ -14,7 +14,14 @@ export class GeminiService {
     //console.log('API Key:', apiKey);
 
     this.genAI = new GoogleGenerativeAI(apiKey);
-    this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    this.model = this.genAI.getGenerativeModel({
+      model: 'gemini-1.5-flash',
+      generationConfig: {
+        temperature: 0.8,
+        topP: 0.9,
+        topK: 40,
+      },
+    });
   }
 
   async generateResponse(prompt: string) {
