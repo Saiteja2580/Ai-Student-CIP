@@ -20,10 +20,12 @@ export class QuizServiceService {
 
   http = inject(HttpClient);
 
-  getQuizQuetsions(quizData: QuizForm) {
+  getQuizQuetsions(pdfFile: FormData) {
+    console.log(pdfFile);
+
     return this.http.post(
       `${Constant.API_URL}${Constant.QUIZ.GENERATE_QUIZ_URL}`,
-      quizData
+      pdfFile
     );
   }
 

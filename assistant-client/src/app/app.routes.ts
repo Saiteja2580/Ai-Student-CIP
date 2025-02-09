@@ -3,13 +3,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { StudentLayoutComponent } from './pages/student-layout/student-layout.component';
 import { SchedulePlannerComponent } from './pages/schedule-planner/schedule-planner.component';
 import { TaskManagerComponent } from './pages/task-manager/task-manager.component';
-import { QuizGeneratorComponent } from './pages/quiz-generator/quiz-generator.component';
+
 import { PerformAnalyzerComponent } from './pages/perform-analyzer/perform-analyzer.component';
 import { CareerComponent } from './pages/career/career.component';
 import { ResourceComponent } from './pages/resource/resource.component';
 import { authGuard } from './services/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { QuizRoutes } from './pages/QuizModule/quiz.routes';
 
 export const routes: Routes = [
   {
@@ -39,8 +40,8 @@ export const routes: Routes = [
         component: TaskManagerComponent,
       },
       {
-        path: 'quiz',
-        component: QuizGeneratorComponent,
+        path: 'quizmodule',
+        children: QuizRoutes,
       },
       {
         path: 'performance',
@@ -56,6 +57,10 @@ export const routes: Routes = [
       },
     ],
   },
+
+  // {
+  //   path:'quizmodule',children:QuizRoutes
+  // },
   {
     path: '**',
     component: ErrorComponent,

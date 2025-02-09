@@ -1,0 +1,13 @@
+<div class="drag-file">
+  <form action="">
+    <h1>
+      What do you want to be <br />
+      quizzed about todat?
+    </h1>
+    <div class="file-filed">
+      <label for="document"></label>
+      <input type="file" id="document" (change)="onFileSelected($event)" />
+    </div>
+    <button (click)="generateQuiz()">Generate Quiz</button>
+  </form>
+</div>
