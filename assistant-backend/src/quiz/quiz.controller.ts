@@ -22,7 +22,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 export class QuizController {
   constructor(private quizService: QuizService) {}
 
-  @Post('generate-quiz')
+  @Post('generate-quiz/:id')
   @UseInterceptors(
     FileInterceptor('file', {
       storage: diskStorage({
@@ -31,10 +31,11 @@ export class QuizController {
       }),
     }),
   )
-  generateQuiz(@UploadedFile() file) {
+  generateQuiz(@Param('id') id: string, @UploadedFile() file) {
     //console.log(file);
+    //console.log(id);
 
-    return this.quizService.generateQuiz(file);
+    return this.quizService.generateQuiz(file, id);
   }
 
   @Post('submit-quiz/:id')

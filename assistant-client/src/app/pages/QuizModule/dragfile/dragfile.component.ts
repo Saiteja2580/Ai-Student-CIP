@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from '../../../services/toaster.service';
 import { QuizServiceService } from '../../../services/quiz-service.service';
+import { QuizResponse } from '../../../models/quiz';
 
 @Component({
   selector: 'app-dragfile',
@@ -15,6 +16,7 @@ export class DragfileComponent {
   selectedFile: File | null = null;
   toaster: ToasterService = inject(ToasterService);
   quizService = inject(QuizServiceService);
+  quizResponse: QuizResponse | undefined;
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -32,8 +34,10 @@ export class DragfileComponent {
     const formData = new FormData();
     formData.append('file', this.selectedFile);
     this.quizService.getQuizQuetsions(formData).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: (response: any) => {
+        this.quizResponse = response;
+        this.quizService.setQuizData(this.quizResponse);
+        this.router.navigateByUrl('/quiz/renderquiz');
       },
       error: (err) => {
         alert(err.message);

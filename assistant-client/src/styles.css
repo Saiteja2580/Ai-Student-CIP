@@ -2,30 +2,30 @@
 
 :root {
   /* Background Colors */
-  --background-body: #fdf6e3; /* Soft warm sand/beige for a light summer feel */
-  --background-section: #2eb5e0; /* Refreshing ocean blue for sections */
-  --background-gradient-start: #feca57; /* Vibrant sunshine yellow */
-  --background-gradient-end: #00a8a8; /* Tropical teal for a beachy contrast */
+  --background-body: #1e1e1e; /* Main dark gray background */
+  --background-section: #3c8dc3; /* Soft electric blue section background */
+  --background-gradient-start: #3e3cc3; /* Gradient start (deep purple) */
+  --background-gradient-end: #151515; /* Gradient end (near black) */
 
   /* Text Colors */
-  --text-primary: #2a2a2a; /* Deep charcoal for readability on light backgrounds */
-  --text-heading: #f97316; /* Bold sunset orange for vibrant headings */
-  --text-subheading: #ffb703; /* Warm golden yellow for friendly subheadings */
-  --text-link: #0088aa; /* Ocean blue for fresh, summery links */
-  --text-link-hover: #005f7a; /* Deeper sea blue for hover effect */
+  --text-primary: #ffffff; /* Body text color (white) */
+  --text-heading: #00e8e8; /* Neon cyan for headings */
+  --text-subheading: #c0c0c0; /* Metallic silver for subheadings */
+  --text-link: #1db4ff; /* Electric blue for links */
+  --text-link-hover: #1488cc; /* Darker electric blue for link hover */
 
   /* Accent Colors */
-  --accent-button: #feca57; /* Bright sun yellow for buttons */
-  --accent-button-hover: #f39c12; /* Warm golden-orange for hover */
-  --accent-button-text: #2a2a2a; /* Dark text for contrast on bright buttons */
+  --accent-button: #3c8dc3; /* Electric blue button background */
+  --accent-button-hover: #325a7c; /* Slightly darker blue on hover */
+  --accent-button-text: #ffffff; /* White button text */
 
   /* Border and Shadow Colors */
-  --border-color: #f97316; /* Sunset orange for a warm accent */
-  --shadow-color: rgba(249, 115, 22, 0.3); /* Soft sunset glow for depth */
-  --shadow-color-light: rgba(255, 183, 3, 0.2); /* Gentle warm highlight */
+  /* --border-color: #2c2c2c; /* Dark border color */
+  --shadow-color: rgba(0, 0, 0, 0.4); /* Shadow for buttons/sections */
+  --shadow-color-light: rgba(255, 255, 255, 0.1);
 
   /* Icon and Line Colors */
-  --icon-line: #00a8a8; /* Tropical teal for icons and dividers */
+  --icon-line: #5a5a5a; /* Neutral gray for lines and dividers */
 }
 
 /* // <uniquifier>: Use a unique and descriptive class name

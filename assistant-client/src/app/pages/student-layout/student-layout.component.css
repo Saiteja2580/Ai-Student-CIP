@@ -94,3 +94,19 @@ main {
   margin: 1rem;
   border-radius: 1rem;
 }
+
+@media (max-width: 1000px) {
+  #sidebar {
+    width: 60px;
+    overflow: hidden;
+  }
+
+  #sidebar a span,
+  #sidebar li span {
+    display: none;
+  }
+
+  #toggle-btn{
+    display: none;
+  }
+}

@@ -1,24 +1,41 @@
 <div class="home-component" #spinnner *ngIf="!isLoading; else spinner">
   <!-- Hero Section -->
   <section id="hero">
-    <div class="hero-nav">
-      <div class="logo">
-        <img src="images/logo.png" alt="this is image" />
+    <div class="nav-bar">
+      <div class="toggleBar">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+          (click)="toggleSidebar()"
+          [ngClass]="{ rotateToggle: isCollapsed }"
+        >
+          <path
+            d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+          />
+        </svg>
       </div>
-      <nav class="nav-links">
-        <ul class="links">
-          <li><a href="">Home</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#cta">Get Started</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav>
-      @if ((auth.isAuthenticated$ |async ) === false) {
-      <div class="login-btn">
-        <button (click)="onLogin()">Login</button>
+      <div class="hero-nav" [ngClass]="{ collapsed: isCollapsed }">
+        <div class="logo">
+          <img src="images/logo.png" alt="this is image" />
+        </div>
+        <nav class="nav-links">
+          <ul class="links" [ngClass]="{ collapsed: isCollapsed }">
+            <li><a [routerLink]="['/']" fragment="hero">Home</a></li>
+            <li><a [routerLink]="['/']" fragment="features">Features</a></li>
+            <li><a [routerLink]="['/']" fragment="about">About Us</a></li>
+            <li><a [routerLink]="['/']" fragment="cta">Get Started</a></li>
+            <li><a [routerLink]="['/']" fragment="contact">Contact Us</a></li>
+          </ul>
+        </nav>
+        @if ((auth.isAuthenticated$ |async ) === false) {
+        <div class="login-btn">
+          <button (click)="onLogin()">Login</button>
+        </div>
+        }
       </div>
-      }
     </div>
 
     <div class="hero-content">

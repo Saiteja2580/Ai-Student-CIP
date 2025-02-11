@@ -15,7 +15,9 @@ import { DocxLoader } from '@langchain/community/document_loaders/fs/docx';
 export class QuizService {
   constructor(private readonly geminiSerice: GeminiService) {}
   loader: PDFLoader | DocxLoader;
-  async generateQuiz(file) {
+
+  // -------------------------------------------Generating Quiz--------------------------------------
+  async generateQuiz(file, id: string) {
     const prompt = `
         Generate a quiz from the following text with 10 questions. Format the output as JSON with:
         - "topic": string (Main subject)
@@ -32,21 +34,16 @@ export class QuizService {
     let extractedtext = '';
 
     if (file.filename.includes('.pdf')) {
-      this.loader = new PDFLoader(filePath, {
-        parsedItemSeparator: '',
-      });
-      const docs = await this.loader.load();
-      extractedtext = docs[0].pageContent;
+      this.loader = new PDFLoader(filePath, { parsedItemSeparator: '' });
     }
     if (file.filename.includes('.docx')) {
       this.loader = new DocxLoader(filePath);
-      const docs = await this.loader.load();
-      extractedtext = docs[0].pageContent;
     }
     if (file.filename.includes('doc')) {
-      this.loader = new DocxLoader(filePath, {
-        type: 'doc',
-      });
+      this.loader = new DocxLoader(filePath, { type: 'doc' });
+    }
+
+    if (this.loader) {
       const docs = await this.loader.load();
       extractedtext = docs[0].pageContent;
     }
@@ -59,8 +56,11 @@ export class QuizService {
 
     return quiz;
   }
-
+  // --------------------------------------------------------Submitting Quiz End Point----------------------------------------------
   async submitQuiz(id, quizResult: QuizResultDto) {
-    return quizResult;
+    return {
+      userId: id,
+      ...quizResult,
+    };
   }
 }

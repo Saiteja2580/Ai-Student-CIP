@@ -40,7 +40,7 @@ export const routes: Routes = [
         component: TaskManagerComponent,
       },
       {
-        path: 'quizmodule',
+        path: 'quiz',
         children: QuizRoutes,
       },
       {

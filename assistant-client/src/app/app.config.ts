@@ -3,7 +3,7 @@ import {
   importProvidersFrom,
   provideZoneChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { ExtraOptions, provideRouter, RouterModule } from '@angular/router';
 import { provideAuth0 } from '@auth0/auth0-angular';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -11,6 +11,12 @@ import { environment } from '../env/env.local';
 import { jwttokenInterceptor } from './auth/jwttoken.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideToastr, ToastrModule } from 'ngx-toastr';
+
+const routerOptions: ExtraOptions = {
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 50], // Adjust offset if needed
+};
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -34,5 +40,6 @@ export const appConfig: ApplicationConfig = {
       progressAnimation: 'increasing',
       closeButton: true,
     }),
+    importProvidersFrom(RouterModule.forRoot([], routerOptions)),
   ],
 };

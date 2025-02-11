@@ -90,6 +90,10 @@ h3 {
   text-align: center;
 }
 
+.toggleBar {
+  display: none;
+}
+
 @keyframes cursor {
   50% {
     border-color: transparent;
@@ -105,14 +109,70 @@ h3 {
   }
 }
 
-@media (max-width: 700px) {
-  .hero-content h1{
-    font-size: 1rem;
+@media (max-width: 1000px) {
+  #hero {
+    padding: 1rem;
+  }
+
+  .hero-content p {
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
     animation: none;
     width: 100%;
     white-space: wrap;
     border: none;
   }
+
+  .toggleBar {
+    display: block;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    background: var(--background-body);
+    position: fixed;
+    top: 0;
+    align-items: center;
+    z-index: 100;
+    padding: 1rem;
+  }
+
+  svg {
+    margin-left: 1rem;
+  }
+
+  .hero-nav {
+    flex-direction: column;
+    width: 200px;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  }
+
+  img {
+    display: none;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+.collapsed {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.rotateToggle {
+  transform: rotate(180deg);
+  transition: 0.3s;
 }
 
 .started-btns {
@@ -176,6 +236,13 @@ h3 {
   transform: translateY(-5px) scale(1.02);
 }
 
+@media (max-width: 1000px) {
+  .feature-section-cards {
+    grid-template-columns: 1fr;
+    padding: 2rem 4rem 2rem 4rem;
+  }
+}
+
 /* ----------------------------------------about -------------------------------------- */
 #about {
   display: flex;
@@ -188,6 +255,16 @@ h3 {
 #about p {
   text-align: center;
   font-size: 1.2rem;
+}
+
+@media (max-width: 1000px) {
+  #about {
+    padding: 4rem 4rem 4rem 4rem;
+  }
+
+  #about h2 {
+    text-align: center;
+  }
 }
 
 /* ------------------------------------------------------ cta section ---------------------- */
@@ -203,6 +280,16 @@ h3 {
 #cta p {
   text-align: center;
   font-size: 1.2rem;
+}
+
+@media (max-width: 1000px) {
+  #cta {
+    padding: 4rem 4rem 4rem 4rem;
+  }
+
+  #cta h2 {
+    text-align: center;
+  }
 }
 
 /* -----------------------------------------------footer-------------------------------- */
@@ -223,4 +310,10 @@ footer p {
 
 .fa-brands {
   font-size: 1.2rem;
+}
+
+@media (max-width: 1000px) {
+  footer {
+    padding: 4rem 4rem 4rem 4rem;
+  }
 }

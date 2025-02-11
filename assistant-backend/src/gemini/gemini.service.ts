@@ -41,7 +41,7 @@ export class GeminiService {
 
     // Parse the cleaned response into JSON
     const quiz = JSON.parse(cleanResponse);
-    // console.log(quiz);
+    console.log(quiz);
 
     return quiz;
   }

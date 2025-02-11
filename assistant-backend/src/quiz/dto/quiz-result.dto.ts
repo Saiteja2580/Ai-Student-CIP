@@ -6,10 +6,6 @@ export class QuizResultDto {
   @IsNotEmpty()
   topic: string;
 
-  @IsString()
-  @IsNotEmpty()
-  difficulty: string;
-
   @IsNumber()
   totalQuestions: number;
 
@@ -18,6 +14,4 @@ export class QuizResultDto {
 
   @IsNumber()
   percentage: number;
-
-  questions: QuizQuestion[];
 }
