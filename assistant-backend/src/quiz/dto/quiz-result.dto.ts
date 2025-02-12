@@ -6,6 +6,10 @@ export class QuizResultDto {
   @IsNotEmpty()
   topic: string;
 
+  @IsString()
+  @IsNotEmpty()
+  filename: string;
+
   @IsNumber()
   totalQuestions: number;
 

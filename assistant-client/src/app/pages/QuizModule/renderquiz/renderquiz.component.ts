@@ -15,6 +15,7 @@ export class RenderquizComponent implements OnInit {
   quizResponse: QuizResponse | undefined;
   quizQuestions: QuizQuestion | any;
   quizResult: QuizResult | any;
+  filename: string | any;
   quizScore: number = 0;
   router = inject(Router);
   selectedAnswers: { [key: number]: string } = {};
@@ -23,7 +24,7 @@ export class RenderquizComponent implements OnInit {
       if (quizResponse) {
         this.quizResponse = quizResponse; // Assign received data to a variable
         this.quizQuestions = quizResponse.questions;
-        console.log(this.quizQuestions);
+        this.filename = quizResponse.filename;
       }
     });
   }
@@ -46,6 +47,7 @@ export class RenderquizComponent implements OnInit {
       }
       this.quizResult = new QuizResult({
         topic: this.quizResponse?.topic ?? 'Unknown Topic',
+        filename: this.filename,
         totalQuestions: 10,
         correctAnswers: this.quizScore,
         percentage: (this.quizScore / 10) * 100,

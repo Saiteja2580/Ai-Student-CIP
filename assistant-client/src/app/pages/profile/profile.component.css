@@ -28,8 +28,8 @@ h1 {
   margin: 10px 0;
   text-shadow: 0px 0px 10px #00a8a8;
 }
-.email {
+.text {
   font-size: 1rem;
-
+  text-align: center;
   margin-bottom: 15px;
 }

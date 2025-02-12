@@ -15,13 +15,13 @@ export class GeminiService {
     if (!apiKey) {
       throw new Error('GOOGLE_API_KEY is not defined');
     }
-    //console.log('API Key:', apiKey);
+    //consol('API Key:', apiKey);
 
     this.genAI = new ChatGoogleGenerativeAI({
       apiKey: apiKey,
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.0-flash',
       maxRetries: 2,
-      temperature: 0.8,
+      temperature: 0.9,
     });
   }
 
@@ -41,7 +41,7 @@ export class GeminiService {
 
     // Parse the cleaned response into JSON
     const quiz = JSON.parse(cleanResponse);
-    console.log(quiz);
+    //console.log(quiz);
 
     return quiz;
   }

@@ -10,8 +10,8 @@ import {
 } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { GenerateQuizDto } from './dto/generate-quiz.dto';
-import { Express } from 'express';
 import { Multer } from 'multer';
+
 import { QuizService } from './quiz.service';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { QuizResultDto } from './dto/quiz-result.dto';
@@ -31,7 +31,7 @@ export class QuizController {
       }),
     }),
   )
-  generateQuiz(@Param('id') id: string, @UploadedFile() file) {
+  generateQuiz(@Param('id') id: string, @UploadedFile() file: Multer.File) {
     //console.log(file);
     //console.log(id);
 

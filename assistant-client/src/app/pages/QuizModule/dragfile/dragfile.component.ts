@@ -1,22 +1,35 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from '../../../services/toaster.service';
 import { QuizServiceService } from '../../../services/quiz-service.service';
 import { QuizResponse } from '../../../models/quiz';
+import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
+import {
+  NgxSpinnerComponent,
+  NgxSpinnerModule,
+  NgxSpinnerService,
+} from 'ngx-spinner';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dragfile',
-  imports: [FormsModule],
+  imports: [FormsModule, SpinnerComponent, NgIf],
   templateUrl: './dragfile.component.html',
   styleUrl: './dragfile.component.css',
 })
-export class DragfileComponent {
+export class DragfileComponent implements OnInit {
+  spinnerService = inject(NgxSpinnerService);
+  isLoading = false;
   router = inject(Router);
   selectedFile: File | null = null;
   toaster: ToasterService = inject(ToasterService);
   quizService = inject(QuizServiceService);
   quizResponse: QuizResponse | undefined;
+
+  ngOnInit(): void {
+    this.spinnerService.show();
+  }
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -27,6 +40,7 @@ export class DragfileComponent {
   }
 
   generateQuiz() {
+    this.isLoading = true;
     if (!this.selectedFile) {
       alert('Please select a PDF file!');
       return;
@@ -35,12 +49,21 @@ export class DragfileComponent {
     formData.append('file', this.selectedFile);
     this.quizService.getQuizQuetsions(formData).subscribe({
       next: (response: any) => {
+        this.isLoading = false;
         this.quizResponse = response;
-        this.quizService.setQuizData(this.quizResponse);
+
+        const responsequiz = {
+          filename: this.selectedFile?.name,
+          ...this.quizResponse,
+        };
+        console.log(responsequiz);
+
+        this.quizService.setQuizData(responsequiz);
         this.router.navigateByUrl('/quiz/renderquiz');
       },
       error: (err) => {
         alert(err.message);
+        this.isLoading = false;
       },
     });
   }

@@ -39,7 +39,6 @@ label::after {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4rem;
-  
 }
 
 input {
@@ -58,4 +57,13 @@ button {
 
 button:hover {
   background-color: var(--accent-button-hover);
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  label {
+    width: 300px;
+  }
 }

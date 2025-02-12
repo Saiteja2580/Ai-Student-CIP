@@ -26,17 +26,16 @@ h2:hover {
   gap: 1rem;
   border: 1px solid var(--background-section);
   padding: 1rem;
-  border-radius: 1rem
+  border-radius: 1rem;
 }
 
-.question h3{
+.question h3 {
   margin-bottom: 1rem;
 }
 
 .option {
   width: 100%;
 
-  
   padding: 0.5rem;
   border-radius: 0.5rem;
   color: var(--text-primary);
@@ -63,4 +62,10 @@ h2:hover {
 
 .submit:hover {
   background-color: var(--accent-button-hover);
+}
+
+@media (max-width: 1000px) {
+  .question {
+    width: 100%;
+  }
 }

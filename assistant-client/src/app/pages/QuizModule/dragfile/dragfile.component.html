@@ -1,8 +1,8 @@
-<div class="drag-file">
+<div class="drag-file" *ngIf="!isLoading; else spinner">
   <form action="">
     <h1>
       What do you want to be <br />
-      quizzed about todat?
+      quizzed about today?
     </h1>
     <div class="file-filed">
       <label for="document"></label>
@@ -11,3 +11,7 @@
     <button (click)="generateQuiz()">Generate Quiz</button>
   </form>
 </div>
+
+<ng-template #spinner>
+  <app-spinner #spinner></app-spinner>
+</ng-template>
