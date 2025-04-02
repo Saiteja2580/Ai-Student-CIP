@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterService } from '../../../services/toaster.service';
-import { QuizServiceService } from '../../../services/quiz-service.service';
-import { QuizResponse } from '../../../models/quiz';
+import { QuizServiceService } from '../../../services/quiz.service';
+import { QuizResponse } from '../../../models/quiz.model';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 import {
   NgxSpinnerComponent,

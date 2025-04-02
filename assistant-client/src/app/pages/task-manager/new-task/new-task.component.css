@@ -1,0 +1,80 @@
+.add-task-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--accent-button);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+form h1 {
+  color: var(--text-dark);
+}
+
+.title {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.title input,
+textarea {
+  border: none;
+  border-radius: 0.1rem;
+  padding: 0.3rem;
+  background-color: var(--accent-button-dark);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.title label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem
+}
+
+.cancel {
+  background: none;
+  color: var(--text-dark);
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.create {
+  background-color: var(--accent-button-dark);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.1rem;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  box-shadow: 1px 11px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close-dialog {
+  display: none;
+}

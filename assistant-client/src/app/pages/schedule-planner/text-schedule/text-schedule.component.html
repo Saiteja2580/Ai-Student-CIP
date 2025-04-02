@@ -1,0 +1,16 @@
+<div
+  class="text-schedule"
+  #spinnner
+  *ngIf="!scheduleService.isloading(); else spinner"
+>
+  <textarea
+    type="text"
+    [(ngModel)]="scheduleText"
+    placeholder="Schedule a meeting with the product team on March 5th at 3 PM in the conference room. It should last until 4 PM and has high priority."
+  ></textarea>
+  <button (click)="validate()">Add Schedule</button>
+</div>
+
+<ng-template #spinner>
+  <app-spinner #spinner></app-spinner>
+</ng-template>

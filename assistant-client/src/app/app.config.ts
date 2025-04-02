@@ -11,6 +11,7 @@ import { environment } from '../env/env.local';
 import { jwttokenInterceptor } from './auth/jwttoken.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideToastr, ToastrModule } from 'ngx-toastr';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 const routerOptions: ExtraOptions = {
   anchorScrolling: 'enabled',
@@ -41,5 +42,6 @@ export const appConfig: ApplicationConfig = {
       closeButton: true,
     }),
     importProvidersFrom(RouterModule.forRoot([], routerOptions)),
+    provideCharts(withDefaultRegisterables()),
   ],
 };

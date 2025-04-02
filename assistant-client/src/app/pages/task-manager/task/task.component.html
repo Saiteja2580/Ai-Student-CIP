@@ -1,0 +1,10 @@
+<div>
+  <div class="task">
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.dueDate }}</p>
+    <p>{{ task.summary }}</p>
+    <div class="actions">
+      <button (click)="onComplete(task._id)">Complete</button>
+    </div>
+  </div>
+</div>

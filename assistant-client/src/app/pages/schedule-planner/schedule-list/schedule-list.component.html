@@ -1,0 +1,39 @@
+<section>
+    <table class="table">
+        <caption>Schedule List</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Category</th>
+                <th>Priority</th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (scheduleList) {
+                @for (schedule of scheduleService.schedules$(); track $index) {
+                    <tr>
+                        <td>{{ schedule.name }}</td>
+                        <td>{{ schedule.date }}</td>
+                        <td>{{ schedule.time }}</td>
+                        <td>{{ schedule.location }}</td>
+                        <td>{{ schedule.category }}</td>
+                        <td>{{ schedule.priority }}</td>
+                        <td >
+                            <div class="actions">
+                                <button (click)="onUpdate(schedule)">Update</button>
+                                <button (click)="onDelete(schedule._id)">Delete</button>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</section>

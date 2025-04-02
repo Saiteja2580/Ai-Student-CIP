@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai';
+import {  GenerativeModel } from '@google/generative-ai';
 import { ConfigService } from '@nestjs/config';
 import { ChatGoogleGenerativeAI } from '@langchain/google-genai';
-import * as pdfParse from 'pdf-parse';
+
 
 import { PromptTemplate } from '@langchain/core/prompts';
 
@@ -26,6 +26,8 @@ export class GeminiService {
   }
 
   async generateResponse(prompt: string, extractedText: string) {
+    console.log(typeof extractedText);
+
     const promptTemplate = new PromptTemplate({
       template: prompt,
       inputVariables: ['text'],
@@ -34,6 +36,7 @@ export class GeminiService {
     const formattedPrompt = await promptTemplate.format({
       text: extractedText,
     });
+    //console.log(formattedPrompt);
 
     const response = await this.genAI.invoke(formattedPrompt);
     const jsonResponse = response.content as string;
@@ -44,5 +47,17 @@ export class GeminiService {
     //console.log(quiz);
 
     return quiz;
+  }
+
+  async generateSchedule(prompt: string) {
+    // console.log(prompt);
+
+    const response = await this.genAI.invoke(prompt);
+    const jsonResponse = response.content as string;
+    const cleanResponse = jsonResponse.replace(/```json|```/g, '').trim();
+
+    const schedule = JSON.parse(cleanResponse);
+
+    return schedule;
   }
 }

@@ -2,30 +2,33 @@
 
 :root {
   /* Background Colors */
-  --background-body: #1e1e1e; /* Main dark gray background */
-  --background-section: #3c8dc3; /* Soft electric blue section background */
-  --background-gradient-start: #3e3cc3; /* Gradient start (deep purple) */
-  --background-gradient-end: #151515; /* Gradient end (near black) */
+  --background-body: #1e1e1e;
+  --background-card: #3c8dc3;
+  --background-gradient-start: #3e3cc3;
+  --background-gradient-end: #151515;
 
   /* Text Colors */
-  --text-primary: #ffffff; /* Body text color (white) */
-  --text-heading: #00e8e8; /* Neon cyan for headings */
-  --text-subheading: #c0c0c0; /* Metallic silver for subheadings */
-  --text-link: #1db4ff; /* Electric blue for links */
-  --text-link-hover: #1488cc; /* Darker electric blue for link hover */
+  --text-primary: #ffffff;
+  --text-heading: #00e8e8;
+  --text-subheading: #c0c0c0;
+  --text-link: #1db4ff;
+  --text-link-hover: #1488cc;
+  --text-dark: #042334;
 
   /* Accent Colors */
-  --accent-button: #3c8dc3; /* Electric blue button background */
-  --accent-button-hover: #325a7c; /* Slightly darker blue on hover */
-  --accent-button-text: #ffffff; /* White button text */
+  --accent-button: #3c8dc3;
+  --accent-button-dark: #1e1e1e;
+  --accent-button-hover: #325a7c;
+  --accent-button-text: #ffffff;
 
   /* Border and Shadow Colors */
-  /* --border-color: #2c2c2c; /* Dark border color */
-  --shadow-color: rgba(0, 0, 0, 0.4); /* Shadow for buttons/sections */
+  --border-color: #2c2c2c;
+  --shadow-color: rgba(0, 0, 0, 0.4);
   --shadow-color-light: rgba(255, 255, 255, 0.1);
 
   /* Icon and Line Colors */
-  --icon-line: #5a5a5a; /* Neutral gray for lines and dividers */
+  --icon-line: #5a5a5a;
+  --input-background: #90b8d2;
 }
 
 /* // <uniquifier>: Use a unique and descriptive class name

@@ -37,7 +37,6 @@ export class QuizService {
 
       // Check if the file already exists for the user
       const existingFile = await this.fileModel.findOne({
-        userId,
         filename: file.filename,
       });
 
@@ -137,5 +136,10 @@ export class QuizService {
     const savedQuizResult = await quizResult.save();
 
     return savedQuizResult;
+  }
+
+  async getQuizById(id: string) {
+    const quizResult = await this.quizModel.findById(id);
+    return quizResult;
   }
 }

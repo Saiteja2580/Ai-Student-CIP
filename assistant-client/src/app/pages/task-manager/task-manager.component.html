@@ -1,1 +1,13 @@
-<p>task-manager works!</p>
+<section>
+  <main>
+    <button (click)="onAddTask()">Add Task</button>
+  </main>
+
+  @for (task of taskService.taskList$; track $index) {
+  <app-task [task]="task"></app-task>
+  } @if (addTask) {
+  <div class="add-task">
+    <app-new-task (closeForm)="onCloseForm($event)"></app-new-task>
+  </div>
+  }
+</section>

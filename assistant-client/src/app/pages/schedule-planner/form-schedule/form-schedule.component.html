@@ -1,0 +1,93 @@
+<form
+  class="form-schedule"
+  #spinnner
+  *ngIf="!scheduleService.isloading(); else spinner"
+>
+  <div class="name field">
+    <label for="name">Schedule Name : </label>
+    <input
+      type="text"
+      [(ngModel)]="newSchedule.name"
+      name="name"
+      placeholder="Schedule Name"
+      id="name"
+      required
+    />
+  </div>
+  <div class="date field">
+    <label for="date">Date : </label>
+    <input
+      type="date"
+      [(ngModel)]="newSchedule.date"
+      name="date"
+      required
+      id="date"
+    />
+  </div>
+
+  <div class="time field">
+    <label for="time">Start Time : </label
+    ><input
+      type="time"
+      [(ngModel)]="newSchedule.time"
+      name="time"
+      required
+      id="time"
+    />
+  </div>
+
+  <div class="endtime field">
+    <label for="endtime">End Time : </label>
+    <input
+      type="time"
+      [(ngModel)]="newSchedule.endTime"
+      name="endTime"
+      placeholder="End Time"
+      id="endtime"
+    />
+  </div>
+
+  <div class="category field">
+    <label for="category">Category : </label>
+    <select [(ngModel)]="newSchedule.category" name="category" id="category">
+      <option value="" disabled selected>Select Category</option>
+      <option value="Meeting">Meeting</option>
+      <option value="Appointment">Appointment</option>
+      <option value="Personal">Personal</option>
+      <option value="Work">Work</option>
+    </select>
+  </div>
+
+  <div class="location field">
+    <label for="location">Location : </label>
+    <input
+      type="text"
+      [(ngModel)]="newSchedule.location"
+      name="location"
+      placeholder="Location"
+      id="location"
+    />
+  </div>
+
+  <div class="priority field">
+    <label for="priority">Priority : </label>
+    <select [(ngModel)]="newSchedule.priority" name="priority" id="priority">
+      <option value="">Select Priority</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </div>
+
+  <div class="submit">
+    @if(isEditMode){
+    <button (click)="updateSchedule()">Update Schedule</button>
+    }@else {
+    <button (click)="validateSchedule()">Add Schedule</button>
+    }
+  </div>
+</form>
+
+<ng-template #spinner>
+  <app-spinner #spinner></app-spinner>
+</ng-template>

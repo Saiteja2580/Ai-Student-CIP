@@ -1,1 +1,20 @@
-<p>dashboard works!</p>
+<div class="score-card">
+  <h2 class="score-title">Quiz Results</h2>
+
+  <div class="score-overview">
+    <p class="score-value">
+      Your Score: {{ quizResult.score }} / {{ quizResult.totalQuestions }}
+    </p>
+  </div>
+
+  <div class="feedback">
+    <p class="feedback-message">{{ feedbackMessage }}</p>
+  </div>
+
+  <div class="answer-breakdown">
+    <p class="correct-answers">✅ Correct Answers: {{ quizResult.score }}</p>
+    <p class="incorrect-answers">
+      ❌ Incorrect Answers: {{ quizResult.totalQuestions - quizResult.score }}
+    </p>
+  </div>
+</div>

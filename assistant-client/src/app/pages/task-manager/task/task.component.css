@@ -1,0 +1,42 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--background-card);
+  color: var(--text-primary);
+  margin: 1rem 3rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  box-shadow: 0 4px 8px var(--shadow-color-light);
+}
+
+.task h1 {
+  font-size: 1.8rem;
+  color: var(--accent-button-dark);
+}
+
+.task p {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions button {
+  background-color: var(--text-dark);
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+  border: none;
+  color: #ffffff;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+
+.actions button:hover {
+  background-color: var(--accent-button-hover);
+}

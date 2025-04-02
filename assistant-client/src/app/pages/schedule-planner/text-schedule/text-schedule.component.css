@@ -1,0 +1,43 @@
+.text-schedule {
+  display: flex;
+  justify-content: space-between;
+}
+
+textarea {
+  width: 60%;
+  padding: 1rem 2rem 1rem 1rem;
+  font-size: 1rem;
+  background-color: var(--input-background);
+  font-weight: 550;
+  border: 1px solid var(--accent-button);
+  border-radius: 0.3rem;
+  color: black;
+  height: 100px;
+}
+
+button {
+  background-color: var(--accent-button);
+  padding: 1rem 2rem;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  
+  align-self: center;
+}
+
+@media (max-width: 700px) {
+  input {
+    width: 100%;
+  }
+
+  .text-schedule {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  button{
+    padding: 1rem 2rem;
+  }
+}

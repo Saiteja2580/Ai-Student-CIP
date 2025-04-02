@@ -35,7 +35,7 @@ main {
 
 #toggle-btn.rotate {
   transform: rotate(180deg);
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
 }
 
 #sidebar ul {
@@ -66,10 +66,13 @@ main {
   svg {
     fill: var(--text-primary);
   }
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 #sidebar a:hover {
-  background-color: var(--background-gradient-end);
+  background-color: var(--accent-button);
+  color: var(--text-dark);
 }
 #toggle-btn {
   border: none;
@@ -109,4 +112,10 @@ main {
   #toggle-btn{
     display: none;
   }
+}
+
+
+.active{
+  background-color: var(--accent-button);
+  color: var(--text-dark);
 }

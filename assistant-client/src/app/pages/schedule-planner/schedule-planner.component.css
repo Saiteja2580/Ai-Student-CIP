@@ -1,0 +1,46 @@
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  height: 100%;
+}
+
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-button);
+  color: white;
+  font-size: 1.2rem;
+}
+
+.active {
+  background-color: var(--accent-button-hover);
+}
+
+.text-btn {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.form-btn {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.schedule-content,
+.schedule-list {
+  border: 1px solid var(--accent-button);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+

@@ -1,11 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TaskComponent } from './task/task.component';
+import { NewTaskComponent } from './new-task/new-task.component';
+import { AuthService } from '@auth0/auth0-angular';
+import { TaskService } from '../../services/task.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-manager',
-  imports: [],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './task-manager.component.html',
-  styleUrl: './task-manager.component.css'
+  styleUrl: './task-manager.component.css',
 })
 export class TaskManagerComponent {
+  tasks: any = [];
+  addTask = false;
+  userName!: string;
+  authService = inject(AuthService);
+  taskService = inject(TaskService);
+  onAddTask() {
+    this.addTask = true;
+  }
 
+  constructor() {
+    this.authService.user$.subscribe((user) => {
+      if (user) {
+        this.userName = user.name!;
+        // Fetch schedules when user logs in
+      }
+    });
+    this.tasks = this.taskService.taskList$;
+  }
+
+  onCloseForm(closeForm: boolean) {
+    this.addTask = closeForm;
+  }
 }

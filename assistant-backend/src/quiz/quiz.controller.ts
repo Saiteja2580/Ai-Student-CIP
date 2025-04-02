@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   Param,
   Post,
   UploadedFile,
@@ -18,7 +19,7 @@ import { QuizResultDto } from './dto/quiz-result.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('quiz')
-// @UseGuards(AuthGuard)
+@UseGuards(AuthGuard)
 export class QuizController {
   constructor(private quizService: QuizService) {}
 
@@ -32,8 +33,8 @@ export class QuizController {
     }),
   )
   generateQuiz(@Param('id') id: string, @UploadedFile() file: Multer.File) {
-    //console.log(file);
-    //console.log(id);
+    console.log(file);
+    console.log(id);
 
     return this.quizService.generateQuiz(file, id);
   }
@@ -46,5 +47,10 @@ export class QuizController {
     //console.log('ID : ', id, 'Reslut : ', quizResult);
 
     return this.quizService.submitQuiz(id, quizResult);
+  }
+
+  @Get('getResultById/:id')
+  getResultById(@Param('id') id: string) {
+    return this.quizService.getQuizById(id);
   }
 }

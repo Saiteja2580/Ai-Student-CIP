@@ -1,1 +1,29 @@
-<p>schedule-planner works!</p>
+<div class="schedule-container">
+  <div class="toggle-buttons">
+    <button (click)="toggleMode()" [class.active]="isTextMode" class="text-btn">
+      Text Input
+    </button>
+    <button
+      (click)="toggleMode()"
+      [class.active]="!isTextMode"
+      class="form-btn"
+    >
+      Form Input
+    </button>
+  </div>
+
+  <div class="schedule-content">
+    <app-text-schedule
+      *ngIf="isTextMode"
+      
+    ></app-text-schedule>
+    <app-form-schedule
+      *ngIf="!isTextMode"
+      
+      [editSchedule]="emittedSchedule"
+    ></app-form-schedule>
+  </div>
+  <div class="schedule-list">
+    <app-schedule-list (scheduleEmitter)="getEmittedSchedule($event)"></app-schedule-list>
+  </div>
+</div>

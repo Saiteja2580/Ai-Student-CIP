@@ -1,0 +1,88 @@
+.score-card {
+  background: var(--background-body);
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.score-title {
+  color: var(--text-heading);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.score-overview {
+  background: var(--background-section);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.score-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.feedback-message {
+  font-size: 1.2rem;
+  color: var(--text-subheading);
+  margin-bottom: 20px;
+}
+
+.answer-breakdown {
+  margin-bottom: 20px;
+}
+
+.correct-answers {
+  color: green;
+  font-size: 1.1rem;
+}
+
+.incorrect-answers {
+  color: red;
+  font-size: 1.1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background: var(--accent-button);
+  color: var(--accent-button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent-button-hover);
+}
+
+.retry-btn {
+  background: #ffb703;
+}
+
+.retry-btn:hover {
+  background: #f39c12;
+}
+
+.dashboard-btn {
+  background: #0088aa;
+  color: white;
+}
+
+.dashboard-btn:hover {
+  background: #005f7a;
+}
