@@ -11,6 +11,7 @@ import { authGuard } from './services/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { QuizRoutes } from './pages/QuizModule/quiz.routes';
+import { CareerRoutes } from './pages/career/career.routes';
 
 export const routes: Routes = [
   {
@@ -53,7 +54,7 @@ export const routes: Routes = [
       },
       {
         path: 'career',
-        component: CareerComponent,
+        children: CareerRoutes,
       },
     ],
   },

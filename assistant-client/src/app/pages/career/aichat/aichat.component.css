@@ -1,0 +1,22 @@
+.bot-message {
+  color: white;
+  background-color: #325a7c;
+  width: 70%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+
+
+.user-message {
+  color: white;
+  background-color: #464681;
+  width: 70%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.user {
+  display: flex;
+  justify-content: flex-end;
+}

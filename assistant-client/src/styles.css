@@ -1,4 +1,5 @@
 @import "ngx-toastr/toastr";
+@import "tailwindcss";
 
 :root {
   /* Background Colors */
@@ -34,8 +35,7 @@
 /* // <uniquifier>: Use a unique and descriptive class name
 // <weight>: Use a value from 100 to 700 */
 * {
-  margin: 0;
-  padding: 0;
+  
   box-sizing: border-box;
 }
 a {

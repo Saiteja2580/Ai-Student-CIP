@@ -1,0 +1,51 @@
+<div class="flex flex-col gap-5 h-[100%]">
+  <div class="flex flex-col gap-2 text-gray-400 my-5">
+    <h1 class="text-3xl font-bold text-(--text-heading)">
+      Career Ai Assistant
+    </h1>
+    <p>
+      Ask me anything about career paths, skill development, or job
+      opportunities
+    </p>
+  </div>
+
+  <div
+    class="flex flex-col gap-3 h-[350px] border-t-1 border-b-1 pt-5 border-gray-500 overflow-y-auto p-10"
+  >
+    <div class="bot-message">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, at.</p>
+    </div>
+
+    <div class="bot-message">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, at.</p>
+    </div>
+    <div class="user">
+      <div class="user-message">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, at.</p>
+      </div>
+    </div>
+    <div class="user">
+      <div class="user-message">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, at.</p>
+      </div>
+    </div>
+  </div>
+  <div class="w-[100%]">
+    <form action="" class="flex gap-5 w-[100%]">
+      <input
+        type="text"
+        name="message"
+        id=""
+        class="border-1 border-gray-500 flex-1 px-5 py-2 rounded-xs"
+        placeholder="Ask a question about Careers, Skills, Job Market"
+        [(ngModel)]="message"
+      />
+      <button
+        class="bg-(--text-heading) px-5 py-2 rounded-xs text-black text"
+        (click)="sendMessage()"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</div>

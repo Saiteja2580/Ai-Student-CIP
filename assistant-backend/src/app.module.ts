@@ -10,6 +10,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from './schedule/schedule.module';
 import { TaskModule } from './task/task.module';
 
+
+import { CareerModule } from './career/career.module';
+
 @Module({
   imports: [
     QuizModule,
@@ -21,6 +24,7 @@ import { TaskModule } from './task/task.module';
     MongooseModule.forRoot('mongodb://127.0.0.1:27017/Learnpro'),
     ScheduleModule,
     TaskModule,
+    CareerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
