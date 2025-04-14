@@ -24,23 +24,57 @@ export class RenderquizComponent implements OnInit {
   quizScore: number = 0;
   router = inject(Router);
   selectedAnswers: { [key: number]: string } = {};
+
+  // Pagination properties
+  currentPage: number = 1;
+  questionsPerPage: number = 1;
+  totalPages: number = 0;
+
   ngOnInit(): void {
     this.quizService.quizData$.subscribe((quizResponse) => {
       if (quizResponse) {
-        this.quizResponse = quizResponse; // Assign received data to a variable
+        this.quizResponse = quizResponse;
         this.quizQuestions = quizResponse.questions;
         this.filename = quizResponse.filename;
+        this.totalPages = Math.ceil(
+          this.quizQuestions.length / this.questionsPerPage
+        );
       }
     });
   }
 
   selectAnswer(questionIndex: number, selectedOption: string) {
-    this.selectedAnswers[questionIndex] = selectedOption; // Store selected option
+    this.selectedAnswers[questionIndex] = selectedOption;
+  }
+
+  // Pagination methods
+  getCurrentPageQuestions(): any[] {
+    const startIndex = (this.currentPage - 1) * this.questionsPerPage;
+    const endIndex = startIndex + this.questionsPerPage;
+    return this.quizQuestions.slice(startIndex, endIndex);
+  }
+
+  goToNextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  goToPreviousPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
   }
 
   onSubmit() {
-    if (Object.keys(this.selectedAnswers).length < 10) {
-      alert('Answer All Questions');
+    if (Object.keys(this.selectedAnswers).length < this.quizQuestions.length) {
+      alert('Please answer all questions before submitting');
     } else {
       for (const questionId in this.selectedAnswers) {
         if (
@@ -53,9 +87,9 @@ export class RenderquizComponent implements OnInit {
       this.quizResult = new QuizResult({
         topic: this.quizResponse?.topic ?? 'Unknown Topic',
         filename: this.filename,
-        totalQuestions: 10,
+        totalQuestions: this.quizQuestions.length,
         correctAnswers: this.quizScore,
-        percentage: (this.quizScore / 10) * 100,
+        percentage: (this.quizScore / this.quizQuestions.length) * 100,
       });
       // -------------------------senidng quizresult to backemd----------------------------
       this.quizService.submitQuiz(this.quizResult).subscribe({

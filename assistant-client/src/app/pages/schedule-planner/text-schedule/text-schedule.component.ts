@@ -16,7 +16,6 @@ export class TextScheduleComponent {
 
   scheduleService = inject(ScheduleService);
 
-
   validate() {
     if (this.scheduleText === '') {
       alert('Prompt should not be empty');
@@ -27,6 +26,8 @@ export class TextScheduleComponent {
   }
 
   addScheduleText() {
+    console.log(this.scheduleText);
+
     this.scheduleService.addScheduleByText(this.scheduleText);
   }
 }

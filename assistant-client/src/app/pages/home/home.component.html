@@ -52,30 +52,37 @@
     <h2>Why Choose LearnPro?</h2>
     <div class="feature-section-cards">
       <div class="feature">
+        <i class="fas fa-calendar-alt feature-icon"></i>
         <h3>Schedule Planning</h3>
         <p>Seamlessly organize your academic schedule with reminders.</p>
       </div>
       <div class="feature">
+        <i class="fas fa-tasks feature-icon"></i>
         <h3>Task Management</h3>
         <p>Prioritize and track tasks for efficient completion.</p>
       </div>
       <div class="feature">
+        <i class="fas fa-question-circle feature-icon"></i>
         <h3>AI-Generated Quizzes</h3>
         <p>Reinforce learning with tailored quizzes.</p>
       </div>
       <div class="feature">
+        <i class="fas fa-chart-line feature-icon"></i>
         <h3>Performance Analysis</h3>
         <p>Gain insights into your strengths and areas of improvement.</p>
       </div>
       <div class="feature">
+        <i class="fas fa-book feature-icon"></i>
         <h3>Resource Recommendations</h3>
         <p>Access curated study materials.</p>
       </div>
       <div class="feature">
+        <i class="fas fa-robot feature-icon"></i>
         <h3>Chatbot Assistance</h3>
         <p>Instant academic support at your fingertips.</p>
       </div>
       <div class="feature">
+        <i class="fas fa-briefcase feature-icon"></i>
         <h3>Career Guidance</h3>
         <p>Get personalized advice for your future.</p>
       </div>
@@ -106,18 +113,27 @@
   <footer id="contact">
     <p>saitejassp2580&#64;gmail.com</p>
     <p>+91-9392887812</p>
-    <div>
-      <a href="https://www.instagram.com/karanamsai2580/" target="_blank"
-        ><i class="fa-brands fa-instagram"></i
-      ></a>
-      |
+    <div class="social-links">
+      <a href="https://www.instagram.com/karanamsai2580/" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <span class="separator">|</span>
       <a
         href="https://www.linkedin.com/in/sai-teja-karanam-a7aab1290/"
         target="_blank"
-        ><i class="fa-brands fa-linkedin"></i
-      ></a>
+      >
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
     </div>
   </footer>
+
+  <div
+    class="scroll-top"
+    (click)="scrollToTop()"
+    [class.visible]="showScrollTop"
+  >
+    <i class="fas fa-arrow-up"></i>
+  </div>
 </div>
 
 <ng-template #spinner>

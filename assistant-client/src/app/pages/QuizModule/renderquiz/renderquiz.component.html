@@ -1,21 +1,76 @@
-<div *ngIf="quizResponse" class="quiz-container">
-  <h2>{{ quizResponse.topic }}</h2>
-  <div
-    *ngFor="let question of quizQuestions; let qIndex = index"
-    class="question"
-  >
-    <h3>{{ qIndex + 1 }}.{{ question.question }}</h3>
+<div
+  *ngIf="quizResponse"
+  class="quiz-container bg-gradient-to-br from-gray-900 to-gray-800"
+>
+  <div class="quiz-header">
+    <h2 class="quiz-title">{{ quizResponse.topic }}</h2>
+  </div>
+
+  <div class="questions-wrapper">
     <div
-      *ngFor="let option of question.options; let oindex = index"
-      (click)="selectAnswer(qIndex, option)"
+      *ngFor="let question of getCurrentPageQuestions(); let qIndex = index"
+      class="question-card"
     >
-      <p
-        class="option"
-        [ngClass]="{ selected: selectedAnswers[qIndex] === option }"
-      >
-        {{ oindex + 1 }}.{{ option }}
-      </p>
+      <h3 class="question-number">
+        Question {{ (currentPage - 1) * questionsPerPage + qIndex + 1 }}
+      </h3>
+      <p class="question-text">{{ question.question }}</p>
+
+      <div class="options-container">
+        <div
+          *ngFor="let option of question.options; let oindex = index"
+          (click)="
+            selectAnswer((currentPage - 1) * questionsPerPage + qIndex, option)
+          "
+          class="option-wrapper"
+        >
+          <div
+            class="option"
+            [ngClass]="{
+              'option-selected':
+                selectedAnswers[
+                  (currentPage - 1) * questionsPerPage + qIndex
+                ] === option
+            }"
+          >
+            <span class="option-number">{{ oindex + 1 }}</span>
+            <span class="option-text">{{ option }}</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <button (click)="onSubmit()" class="submit">Submit Quiz</button>
+
+  <div class="pagination-controls">
+    <button
+      class="pagination-button"
+      (click)="goToPreviousPage()"
+      [disabled]="currentPage === 1"
+    >
+      Previous
+    </button>
+
+    <div class="page-numbers">
+      <button
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        class="page-number"
+        [ngClass]="{ active: currentPage === i + 1 }"
+        (click)="goToPage(i + 1)"
+      >
+        {{ i + 1 }}
+      </button>
+    </div>
+
+    <button
+      class="pagination-button"
+      (click)="goToNextPage()"
+      [disabled]="currentPage === totalPages"
+    >
+      Next
+    </button>
+  </div>
+
+  <div class="submit-container" *ngIf="currentPage === totalPages">
+    <button (click)="onSubmit()" class="submit-button">Submit Quiz</button>
+  </div>
 </div>

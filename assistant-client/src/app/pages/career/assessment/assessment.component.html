@@ -1,1 +1,617 @@
-<p>assessment works!</p>
+<div
+  class="container mx-auto p-8 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl rounded-lg"
+>
+  <h1 class="text-3xl font-bold mb-8 text-indigo-300 text-center">
+    Tell Us About Yourself
+  </h1>
+
+  <!-- Progress Bar -->
+  <div class="mb-8">
+    <div class="flex justify-between mb-2">
+      <span class="text-indigo-200 text-sm"
+        >Step {{ currentStep }} of {{ totalSteps }}</span
+      >
+      <span class="text-indigo-200 text-sm"
+        >{{ (currentStep / totalSteps) * 100 | number : "1.0-0" }}%
+        Complete</span
+      >
+    </div>
+    <div class="w-full bg-gray-700 rounded-full h-2.5">
+      <div
+        id="progressBar"
+        class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300"
+        [style.width.%]="(currentStep / totalSteps) * 100"
+      ></div>
+    </div>
+  </div>
+
+  <form id="careerQuestionnaire" class="space-y-6" (ngSubmit)="onSubmit()">
+    <!-- Step 1: Interests -->
+    <div id="step1" class="step-content" [class.hidden]="currentStep !== 1">
+      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+        <h2 class="text-xl font-semibold mb-4 text-indigo-200">
+          Your Interests
+        </h2>
+        <div class="space-y-6">
+          <div>
+            <label
+              for="enjoyedActivities"
+              class="block text-indigo-200 text-sm font-semibold mb-2"
+              >Which activities do you enjoy most?</label
+            >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="building"
+                  name="interests.enjoyedActivities"
+                  value="building"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="building" class="text-gray-100"
+                  >Building or fixing things</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="art"
+                  name="interests.enjoyedActivities"
+                  value="art"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="art" class="text-gray-100"
+                  >Creating art or music</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="analyzing"
+                  name="interests.enjoyedActivities"
+                  value="analyzing"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="analyzing" class="text-gray-100"
+                  >Analyzing data and solving problems</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="leading"
+                  name="interests.enjoyedActivities"
+                  value="leading"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="leading" class="text-gray-100"
+                  >Leading or organizing groups</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="writing"
+                  name="interests.enjoyedActivities"
+                  value="writing"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="writing" class="text-gray-100"
+                  >Writing and storytelling</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="helping"
+                  name="interests.enjoyedActivities"
+                  value="helping"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="helping" class="text-gray-100"
+                  >Helping and advising others</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="researching"
+                  name="interests.enjoyedActivities"
+                  value="researching"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="researching" class="text-gray-100"
+                  >Researching and investigating</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="performing"
+                  name="interests.enjoyedActivities"
+                  value="performing"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="performing" class="text-gray-100"
+                  >Performing or presenting</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="enjoyedSchoolSubjects"
+              class="block text-indigo-200 text-sm font-semibold mb-2"
+              >Which subjects did you enjoy in school?</label
+            >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="mathematics"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="mathematics"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="mathematics" class="text-gray-100"
+                  >Mathematics</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="science"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="science"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="science" class="text-gray-100">Science</label>
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="history"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="history"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="history" class="text-gray-100">History</label>
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="literature"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="literature"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="literature" class="text-gray-100">Literature</label>
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="art_subject"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="art"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="art_subject" class="text-gray-100">Art</label>
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="music"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="music"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="music" class="text-gray-100">Music</label>
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="computerscience"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="computerscience"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="computerscience" class="text-gray-100"
+                  >Computer Science</label
+                >
+              </div>
+              <div class="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="languages"
+                  name="interests.enjoyedSchoolSubjects"
+                  value="languages"
+                  class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
+                />
+                <label for="languages" class="text-gray-100"
+                  >Foreign Languages</label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Step 2: Skills -->
+    <div id="step2" class="step-content" [class.hidden]="currentStep !== 2">
+      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+        <h2 class="text-xl font-semibold mb-4 text-indigo-200">Your Skills</h2>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-indigo-200 text-sm font-semibold mb-4"
+              >Rate your proficiency in these skills (1-5):</label
+            >
+            <div class="space-y-4">
+              <div>
+                <label
+                  for="problemSolving"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Problem-solving</label
+                >
+                <input
+                  type="range"
+                  id="problemSolving"
+                  name="skills.problemSolving"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Beginner</span>
+                  <span>Expert</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="communication"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Communication</label
+                >
+                <input
+                  type="range"
+                  id="communication"
+                  name="skills.communication"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Beginner</span>
+                  <span>Expert</span>
+                </div>
+              </div>
+              <div>
+                <label for="teamwork" class="block text-gray-100 text-sm mb-1"
+                  >Teamwork</label
+                >
+                <input
+                  type="range"
+                  id="teamwork"
+                  name="skills.teamwork"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Beginner</span>
+                  <span>Expert</span>
+                </div>
+              </div>
+              <div>
+                <label for="leadership" class="block text-gray-100 text-sm mb-1"
+                  >Leadership</label
+                >
+                <input
+                  type="range"
+                  id="leadership"
+                  name="skills.leadership"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Beginner</span>
+                  <span>Expert</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="proudProject"
+              class="block text-indigo-200 text-sm font-semibold mb-2"
+            >
+              Describe a project you're proud of and the skills you used:
+            </label>
+            <textarea
+              id="proudProject"
+              name="skills.proudProject"
+              rows="3"
+              class="shadow-sm border-2 border-gray-700 bg-gray-800 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 transition duration-200"
+              placeholder="Project description and skills used"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Step 3: Values -->
+    <div id="step3" class="step-content" [class.hidden]="currentStep !== 3">
+      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+        <h2 class="text-xl font-semibold mb-4 text-indigo-200">Your Values</h2>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-indigo-200 text-sm font-semibold mb-4"
+              >How important are these values to you? (1-5):</label
+            >
+            <div class="space-y-4">
+              <div>
+                <label
+                  for="value_autonomy"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Autonomy & Independence</label
+                >
+                <input
+                  type="range"
+                  id="value_autonomy"
+                  name="values.rankedWorkValues.autonomy"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Important</span>
+                  <span>Very Important</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="value_collaboration"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Collaboration & Teamwork</label
+                >
+                <input
+                  type="range"
+                  id="value_collaboration"
+                  name="values.rankedWorkValues.collaboration"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Important</span>
+                  <span>Very Important</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="value_creativity"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Creativity & Innovation</label
+                >
+                <input
+                  type="range"
+                  id="value_creativity"
+                  name="values.rankedWorkValues.creativity"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Important</span>
+                  <span>Very Important</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="value_stability"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Job Stability</label
+                >
+                <input
+                  type="range"
+                  id="value_stability"
+                  name="values.rankedWorkValues.stability"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Important</span>
+                  <span>Very Important</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="value_highIncome"
+                  class="block text-gray-100 text-sm mb-1"
+                  >High Income</label
+                >
+                <input
+                  type="range"
+                  id="value_highIncome"
+                  name="values.rankedWorkValues.highIncome"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Important</span>
+                  <span>Very Important</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Step 4: Learning Style -->
+    <div id="step4" class="step-content" [class.hidden]="currentStep !== 4">
+      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+        <h2 class="text-xl font-semibold mb-4 text-indigo-200">
+          Your Learning Style
+        </h2>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-indigo-200 text-sm font-semibold mb-4"
+              >How do you prefer to learn? (Rate 1-5):</label
+            >
+            <div class="space-y-4">
+              <div>
+                <label
+                  for="learning_reading"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Reading & Research</label
+                >
+                <input
+                  type="range"
+                  id="learning_reading"
+                  name="learningStyle.reading"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Preferred</span>
+                  <span>Very Preferred</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="learning_practical"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Hands-on Practice</label
+                >
+                <input
+                  type="range"
+                  id="learning_practical"
+                  name="learningStyle.practical"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Preferred</span>
+                  <span>Very Preferred</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="learning_visual"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Visual Learning</label
+                >
+                <input
+                  type="range"
+                  id="learning_visual"
+                  name="learningStyle.visual"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Preferred</span>
+                  <span>Very Preferred</span>
+                </div>
+              </div>
+              <div>
+                <label
+                  for="learning_group"
+                  class="block text-gray-100 text-sm mb-1"
+                  >Group Discussion</label
+                >
+                <input
+                  type="range"
+                  id="learning_group"
+                  name="learningStyle.group"
+                  min="1"
+                  max="5"
+                  step="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                />
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                  <span>Not Preferred</span>
+                  <span>Very Preferred</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="comfortWithTechnicalDetail"
+              class="block text-indigo-200 text-sm font-semibold mb-2"
+            >
+              How comfortable are you with technical details?
+            </label>
+            <input
+              type="range"
+              id="comfortWithTechnicalDetail"
+              name="learningStyle.comfortWithTechnicalDetail"
+              min="1"
+              max="5"
+              step="1"
+              class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+            />
+            <div class="flex justify-between text-xs text-gray-400 mt-1">
+              <span>Not Comfortable</span>
+              <span>Very Comfortable</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-between mt-8">
+      <button
+        type="button"
+        id="prevBtn"
+        class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+        [class.hidden]="currentStep === 1"
+        (click)="previousStep()"
+      >
+        Previous
+      </button>
+      <button
+        type="button"
+        id="nextBtn"
+        class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+        [class.hidden]="currentStep === totalSteps"
+        (click)="nextStep()"
+      >
+        Next
+      </button>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      id="submitBtn"
+      class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform transition duration-200 hover:scale-[1.02]"
+      [class.hidden]="currentStep !== totalSteps"
+    >
+      Get Your Career Recommendations
+    </button>
+  </form>
+</div>

@@ -21,6 +21,7 @@ import { NgIf } from '@angular/common';
 export class DragfileComponent implements OnInit {
   spinnerService = inject(NgxSpinnerService);
   isLoading = false;
+  isDragover = false;
   router = inject(Router);
   selectedFile: File | null = null;
   toaster: ToasterService = inject(ToasterService);
@@ -31,7 +32,30 @@ export class DragfileComponent implements OnInit {
     this.spinnerService.show();
   }
 
-  onFileSelected(event: Event) {
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragover = true;
+  }
+
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragover = false;
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragover = false;
+
+    const files = event.dataTransfer?.files;
+    if (files && files.length > 0) {
+      this.onFileSelected({ target: { files: files } } as any);
+    }
+  }
+
+  onFileSelected(event: any) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.toaster.showSuccess('File Uploaded Successfully', 'Success');

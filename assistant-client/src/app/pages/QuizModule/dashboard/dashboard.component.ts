@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   quizResult: any;
 
   route = inject(ActivatedRoute);
-  router = inject(Router);
+  router = inject(Router)
   quizService = inject(QuizServiceService);
 
   feedbackMessage: string = '';
@@ -52,5 +52,9 @@ export class DashboardComponent implements OnInit {
     } else {
       this.feedbackMessage = 'Keep Practicing!';
     }
+  }
+
+  onTryAgain() {
+    this.router.navigateByUrl('/quiz/dragfile');
   }
 }

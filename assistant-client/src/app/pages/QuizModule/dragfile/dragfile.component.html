@@ -1,14 +1,35 @@
 <div class="drag-file" *ngIf="!isLoading; else spinner">
-  <form action="">
-    <h1 class="text-3xl font-bold">
+  <form action="" class="quiz-form bg-gradient-to-br from-gray-900 to-gray-800">
+    <h1 class="text-3xl font-bold text-center mb-8">
       What do you want to be <br />
       quizzed about today?
     </h1>
-    <div class="file-filed">
-      <label for="document"></label>
-      <input type="file" id="document" (change)="onFileSelected($event)" />
+    <div class="file-field">
+      <div
+        class="drop-zone"
+        [class.dragover]="isDragover"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)"
+      >
+        <div class="drop-zone-content">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Drag & Drop your file here</p>
+          <p class="text-sm text-gray-500">or</p>
+          <label for="document" class="upload-btn">Browse Files</label>
+          <input
+            type="file"
+            id="document"
+            (change)="onFileSelected($event)"
+            class="hidden"
+          />
+        </div>
+      </div>
     </div>
-    <button (click)="generateQuiz()">Generate Quiz</button>
+    <button (click)="generateQuiz()" class="generate-btn">
+      <span>Generate Quiz</span>
+      <i class="fas fa-arrow-right"></i>
+    </button>
   </form>
 </div>
 

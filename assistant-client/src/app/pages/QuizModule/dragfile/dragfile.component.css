@@ -1,69 +1,112 @@
 .drag-file {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  text-align: center;
-  gap: 1rem;
-}
-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-direction: column;
-  width: 100%;
-}
-.file-filed {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
-label {
-  height: 80px;
-  border: 5px dashed var(--text-link);
-  padding: 3rem;
-  width: 400px;
-  position: relative;
+.quiz-form {
+  padding: 2.5rem;
   border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 32rem;
 }
 
-label::after {
-  content: "+";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 4rem;
+h1 {
+  color: #ffffff;
+  margin-bottom: 2rem;
+  line-height: 1.4;
 }
 
-input {
-  display: none;
+.file-field {
+  margin: 2rem 0;
 }
 
-button {
-  background-color: var(--accent-button);
+.drop-zone {
+  border: 2px dashed #4a4a4a;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  background-color: #363636;
+  cursor: pointer;
+}
+
+.drop-zone.dragover {
+  border-color: #3b82f6;
+  background-color: #1e3a8a;
+}
+
+.drop-zone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.drop-zone i {
+  font-size: 2.5rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.drop-zone p {
+  color: #e5e5e5;
+  margin: 0;
+}
+
+.drop-zone p.text-sm {
+  color: #9ca3af;
+}
+
+.upload-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.upload-btn:hover {
+  background-color: #2563eb;
+}
+
+.generate-btn {
+  width: 100%;
   padding: 1rem;
-  border-radius: 5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+  background-color: #3b82f6;
+  color: white;
   border: none;
-  color: var(--accent-button-text);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-button:hover {
-  background-color: var(--accent-button-hover);
+.generate-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
 }
 
-@media (max-width: 700px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-  label {
-    width: 300px;
-  }
+.generate-btn i {
+  transition: transform 0.3s ease;
+}
+
+.generate-btn:hover i {
+  transform: translateX(4px);
+}
+
+.hidden {
+  display: none;
 }

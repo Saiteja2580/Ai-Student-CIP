@@ -1,9 +1,70 @@
 @if (user) {
-<div class="profile">
-  <h1>Welcome, {{ user.name }}</h1>
-  <img [src]="user.picture" alt="" />
+<div class="min-h-screen  py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-gray-800 shadow-xl rounded-lg overflow-hidden">
+      <div class="p-8">
+        <div class="flex flex-col items-center space-y-6">
+          <!-- Profile Picture -->
+          <div class="relative">
+            <img
+              [src]="user.picture"
+              alt="Profile picture"
+              class="w-32 h-32 rounded-full border-4 border-indigo-500 object-cover shadow-lg"
+            />
+          </div>
 
-  <p class="text"><b>Email : </b>{{ user.email }}</p>
-  <p class="text"><b>Auth Id : </b>{{ user.sub }}</p>
+          <!-- User Name -->
+          <h1 class="text-3xl font-bold text-white">
+            Welcome, {{ user.name }}
+          </h1>
+
+          <!-- User Details -->
+          <div class="w-full space-y-4 bg-gray-700 p-6 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-indigo-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              <p class="text-gray-300">
+                <span class="font-semibold text-indigo-400">Email:</span>
+                {{ user.email }}
+              </p>
+            </div>
+
+            <div class="flex items-center space-x-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-indigo-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"
+                />
+              </svg>
+              <p class="text-gray-300">
+                <span class="font-semibold text-indigo-400">Auth ID:</span>
+                {{ user.sub }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 }

@@ -8,7 +8,15 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
-  imports: [AsyncPipe, NgIf, SpinnerComponent, NgxSpinnerModule, NgIf, NgClass,RouterLink],
+  imports: [
+    AsyncPipe,
+    NgIf,
+    SpinnerComponent,
+    NgxSpinnerModule,
+    NgIf,
+    NgClass,
+    RouterLink,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -20,6 +28,10 @@ export class HomeComponent implements OnInit {
   auth = inject(AuthService);
   toaster = inject(ToasterService);
   isHidden: boolean = false;
+  showScrollTop = false;
+
+  constructor(private authService: AuthService) {}
+
   ngOnInit(): void {
     this.checkScreenSize();
     this.isLoading = true;
@@ -29,6 +41,10 @@ export class HomeComponent implements OnInit {
         this.router.navigateByUrl('/profile');
       }
       this.isLoading = false;
+    });
+
+    window.addEventListener('scroll', () => {
+      this.showScrollTop = window.scrollY > 300;
     });
   }
 
@@ -74,5 +90,9 @@ export class HomeComponent implements OnInit {
 
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

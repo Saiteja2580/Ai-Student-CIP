@@ -1,20 +1,46 @@
-<div class="score-card">
-  <h2 class="score-title">Quiz Results</h2>
+<div class="score-card bg-gradient-to-br from-gray-900 to-gray-800">
+  <div class="score-header">
+    <i class="fas fa-trophy trophy-icon"></i>
+    <h2 class="score-title">Quiz Results</h2>
+  </div>
 
   <div class="score-overview">
-    <p class="score-value">
-      Your Score: {{ quizResult.score }} / {{ quizResult.totalQuestions }}
-    </p>
+    <div class="score-circle">
+      <div class="score-inner">
+        <span class="score-value">{{ quizResult.score }}</span>
+        <span class="score-divider">/</span>
+        <span class="total-questions">{{ quizResult.totalQuestions }}</span>
+      </div>
+    </div>
   </div>
 
   <div class="feedback">
+    <i class="fas fa-comment-alt feedback-icon"></i>
     <p class="feedback-message">{{ feedbackMessage }}</p>
   </div>
 
   <div class="answer-breakdown">
-    <p class="correct-answers">✅ Correct Answers: {{ quizResult.score }}</p>
-    <p class="incorrect-answers">
-      ❌ Incorrect Answers: {{ quizResult.totalQuestions - quizResult.score }}
-    </p>
+    <div class="stat-card correct">
+      <i class="fas fa-check-circle"></i>
+      <div class="stat-info">
+        <span class="stat-label">Correct</span>
+        <span class="stat-value">{{ quizResult.score }}</span>
+      </div>
+    </div>
+    <div class="stat-card incorrect">
+      <i class="fas fa-times-circle"></i>
+      <div class="stat-info">
+        <span class="stat-label">Incorrect</span>
+        <span class="stat-value">{{
+          quizResult.totalQuestions - quizResult.score
+        }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn retry-btn" (click)="onTryAgain()">
+      <i class="fas fa-redo"></i> Try Again
+    </button>
   </div>
 </div>

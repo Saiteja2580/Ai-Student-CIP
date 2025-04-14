@@ -7,7 +7,7 @@ import { AichatComponent } from './aichat/aichat.component';
 export const CareerRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'career-home',
+    redirectTo: 'career-home/assessment',
     pathMatch: 'full',
   },
   {

@@ -20,4 +20,9 @@ export const Constant = {
     UPDATE_TASK_URL: `${environment.apiBaseUrl}/task`,
     DELETE_TASK_URL: `${environment.apiBaseUrl}/task`,
   },
+
+  CAREER: {
+    GET_QUESTION_RESPONSE_URL: `${environment.apiBaseUrl}/career/ask`,
+    GET_CHAT_HISTORY_URL: `${environment.apiBaseUrl}/career/history`,
+  },
 };
