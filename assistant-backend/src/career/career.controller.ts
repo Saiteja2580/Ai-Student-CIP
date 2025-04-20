@@ -10,6 +10,8 @@ export class CareerController {
     @Body('question') question: string,
     @Param('id') userId: string,
   ) {
+    console.log(question, userId);
+
     return await this.careerService.getUserQuestion(question, userId);
   }
 

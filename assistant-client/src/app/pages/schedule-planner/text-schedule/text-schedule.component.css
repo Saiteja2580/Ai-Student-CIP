@@ -1,14 +1,19 @@
 .text-schedule {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   background-color: #1a1a1a;
   padding: 2rem;
   border-radius: 0.8rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 textarea {
-  width: 60%;
+  width: 70%;
   padding: 1.2rem;
   font-size: 1rem;
   background-color: #2d2d2d;
@@ -16,7 +21,8 @@ textarea {
   border: 2px solid var(--accent-button);
   border-radius: 0.5rem;
   color: #ffffff;
-  height: 100px;
+  min-height: 100px;
+  max-height: 200px;
   resize: vertical;
   transition: all 0.3s ease;
 }
@@ -39,10 +45,11 @@ button {
   font-size: 1.1rem;
   border-radius: 0.5rem;
   font-weight: 600;
-  align-self: center;
+  align-self: flex-start;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
 }
 
 button:hover {
@@ -55,11 +62,30 @@ button:active {
   transform: translateY(0);
 }
 
+/* Large screens */
+@media (max-width: 1200px) {
+  .text-schedule {
+    padding: 1.8rem;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 900px) {
+  .text-schedule {
+    padding: 1.5rem;
+  }
+
+  textarea {
+    width: 65%;
+  }
+}
+
+/* Small screens */
 @media (max-width: 700px) {
   .text-schedule {
     flex-direction: column;
     gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
 
   textarea {
@@ -69,5 +95,23 @@ button:active {
   button {
     width: 100%;
     padding: 1rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .text-schedule {
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  textarea {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.9rem;
   }
 }

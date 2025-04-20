@@ -27,6 +27,8 @@ export class DragfileComponent implements OnInit {
   toaster: ToasterService = inject(ToasterService);
   quizService = inject(QuizServiceService);
   quizResponse: QuizResponse | undefined;
+  topicName: string = '';
+  difficultyLevel: string = 'medium';
 
   ngOnInit(): void {
     this.spinnerService.show();
@@ -71,6 +73,9 @@ export class DragfileComponent implements OnInit {
     }
     const formData = new FormData();
     formData.append('file', this.selectedFile);
+    formData.append('topic', this.topicName);
+    formData.append('difficulty', this.difficultyLevel);
+
     this.quizService.getQuizQuetsions(formData).subscribe({
       next: (response: any) => {
         this.isLoading = false;

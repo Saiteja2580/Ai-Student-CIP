@@ -1,51 +1,65 @@
 <div
-  class="container mx-auto p-8 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl rounded-lg"
+  class="container mx-auto p-4 sm:p-6 md:p-8 bg-gradient-to-br from-gray-900 to-gray-800 shadow-xl rounded-lg"
 >
-  <h1 class="text-3xl font-bold mb-8 text-indigo-300 text-center">
+  <h1
+    class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-8 text-indigo-300 text-center"
+  >
     Tell Us About Yourself
   </h1>
 
   <!-- Progress Bar -->
-  <div class="mb-8">
+  <div class="mb-4 sm:mb-8">
     <div class="flex justify-between mb-2">
-      <span class="text-indigo-200 text-sm"
+      <span class="text-indigo-200 text-xs sm:text-sm"
         >Step {{ currentStep }} of {{ totalSteps }}</span
       >
-      <span class="text-indigo-200 text-sm"
+      <span class="text-indigo-200 text-xs sm:text-sm"
         >{{ (currentStep / totalSteps) * 100 | number : "1.0-0" }}%
         Complete</span
       >
     </div>
-    <div class="w-full bg-gray-700 rounded-full h-2.5">
+    <div class="w-full bg-gray-700 rounded-full h-2 sm:h-2.5">
       <div
         id="progressBar"
-        class="bg-indigo-600 h-2.5 rounded-full transition-all duration-300"
+        class="bg-indigo-600 h-2 sm:h-2.5 rounded-full transition-all duration-300"
         [style.width.%]="(currentStep / totalSteps) * 100"
       ></div>
     </div>
   </div>
 
-  <form id="careerQuestionnaire" class="space-y-6" (ngSubmit)="onSubmit()">
+  <form
+    id="careerQuestionnaire"
+    class="space-y-4 sm:space-y-6"
+    (ngSubmit)="onSubmit()"
+    #careerForm="ngForm"
+  >
     <!-- Step 1: Interests -->
     <div id="step1" class="step-content" [class.hidden]="currentStep !== 1">
-      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
-        <h2 class="text-xl font-semibold mb-4 text-indigo-200">
+      <section
+        class="bg-gray-800/50 p-4 sm:p-6 rounded-lg border border-gray-700"
+      >
+        <h2
+          class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-indigo-200"
+        >
           Your Interests
         </h2>
-        <div class="space-y-6">
+        <div class="space-y-4 sm:space-y-6">
           <div>
             <label
               for="enjoyedActivities"
               class="block text-indigo-200 text-sm font-semibold mb-2"
               >Which activities do you enjoy most?</label
             >
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div class="flex items-center space-x-3">
                 <input
                   type="checkbox"
                   id="building"
-                  name="interests.enjoyedActivities"
-                  value="building"
+                  [value]="'building'"
+                  (change)="toggleActivity('building')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('building')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="building" class="text-gray-100"
@@ -56,8 +70,11 @@
                 <input
                   type="checkbox"
                   id="art"
-                  name="interests.enjoyedActivities"
-                  value="art"
+                  [value]="'art'"
+                  (change)="toggleActivity('art')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('art')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="art" class="text-gray-100"
@@ -68,8 +85,11 @@
                 <input
                   type="checkbox"
                   id="analyzing"
-                  name="interests.enjoyedActivities"
-                  value="analyzing"
+                  [value]="'analyzing'"
+                  (change)="toggleActivity('analyzing')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('analyzing')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="analyzing" class="text-gray-100"
@@ -80,8 +100,11 @@
                 <input
                   type="checkbox"
                   id="leading"
-                  name="interests.enjoyedActivities"
-                  value="leading"
+                  [value]="'leading'"
+                  (change)="toggleActivity('leading')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('leading')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="leading" class="text-gray-100"
@@ -92,8 +115,11 @@
                 <input
                   type="checkbox"
                   id="writing"
-                  name="interests.enjoyedActivities"
-                  value="writing"
+                  [value]="'writing'"
+                  (change)="toggleActivity('writing')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('writing')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="writing" class="text-gray-100"
@@ -104,8 +130,11 @@
                 <input
                   type="checkbox"
                   id="helping"
-                  name="interests.enjoyedActivities"
-                  value="helping"
+                  [value]="'helping'"
+                  (change)="toggleActivity('helping')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('helping')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="helping" class="text-gray-100"
@@ -116,8 +145,11 @@
                 <input
                   type="checkbox"
                   id="researching"
-                  name="interests.enjoyedActivities"
-                  value="researching"
+                  [value]="'researching'"
+                  (change)="toggleActivity('researching')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('researching')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="researching" class="text-gray-100"
@@ -128,14 +160,24 @@
                 <input
                   type="checkbox"
                   id="performing"
-                  name="interests.enjoyedActivities"
-                  value="performing"
+                  [value]="'performing'"
+                  (change)="toggleActivity('performing')"
+                  [checked]="
+                    formData.interests.enjoyedActivities.includes('performing')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="performing" class="text-gray-100"
                   >Performing or presenting</label
                 >
               </div>
+            </div>
+            <!-- Validation error for activities -->
+            <div
+              *ngIf="validationErrors['activities']"
+              class="mt-2 text-red-400 text-sm"
+            >
+              {{ validationErrors["activities"] }}
             </div>
           </div>
 
@@ -145,13 +187,18 @@
               class="block text-indigo-200 text-sm font-semibold mb-2"
               >Which subjects did you enjoy in school?</label
             >
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div class="flex items-center space-x-3">
                 <input
                   type="checkbox"
                   id="mathematics"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="mathematics"
+                  [value]="'mathematics'"
+                  (change)="toggleSubject('mathematics')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes(
+                      'mathematics'
+                    )
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="mathematics" class="text-gray-100"
@@ -162,8 +209,11 @@
                 <input
                   type="checkbox"
                   id="science"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="science"
+                  [value]="'science'"
+                  (change)="toggleSubject('science')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes('science')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="science" class="text-gray-100">Science</label>
@@ -172,8 +222,11 @@
                 <input
                   type="checkbox"
                   id="history"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="history"
+                  [value]="'history'"
+                  (change)="toggleSubject('history')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes('history')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="history" class="text-gray-100">History</label>
@@ -182,8 +235,13 @@
                 <input
                   type="checkbox"
                   id="literature"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="literature"
+                  [value]="'literature'"
+                  (change)="toggleSubject('literature')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes(
+                      'literature'
+                    )
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="literature" class="text-gray-100">Literature</label>
@@ -192,8 +250,11 @@
                 <input
                   type="checkbox"
                   id="art_subject"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="art"
+                  [value]="'art'"
+                  (change)="toggleSubject('art')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes('art')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="art_subject" class="text-gray-100">Art</label>
@@ -202,8 +263,11 @@
                 <input
                   type="checkbox"
                   id="music"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="music"
+                  [value]="'music'"
+                  (change)="toggleSubject('music')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes('music')
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="music" class="text-gray-100">Music</label>
@@ -212,8 +276,13 @@
                 <input
                   type="checkbox"
                   id="computerscience"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="computerscience"
+                  [value]="'computerscience'"
+                  (change)="toggleSubject('computerscience')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes(
+                      'computerscience'
+                    )
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="computerscience" class="text-gray-100"
@@ -224,14 +293,26 @@
                 <input
                   type="checkbox"
                   id="languages"
-                  name="interests.enjoyedSchoolSubjects"
-                  value="languages"
+                  [value]="'languages'"
+                  (change)="toggleSubject('languages')"
+                  [checked]="
+                    formData.interests.enjoyedSchoolSubjects.includes(
+                      'languages'
+                    )
+                  "
                   class="w-4 h-4 text-indigo-600 bg-gray-700 border-gray-600 rounded focus:ring-indigo-500"
                 />
                 <label for="languages" class="text-gray-100"
                   >Foreign Languages</label
                 >
               </div>
+            </div>
+            <!-- Validation error for subjects -->
+            <div
+              *ngIf="validationErrors['subjects']"
+              class="mt-2 text-red-400 text-sm"
+            >
+              {{ validationErrors["subjects"] }}
             </div>
           </div>
         </div>
@@ -240,9 +321,15 @@
 
     <!-- Step 2: Skills -->
     <div id="step2" class="step-content" [class.hidden]="currentStep !== 2">
-      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
-        <h2 class="text-xl font-semibold mb-4 text-indigo-200">Your Skills</h2>
-        <div class="space-y-6">
+      <section
+        class="bg-gray-800/50 p-4 sm:p-6 rounded-lg border border-gray-700"
+      >
+        <h2
+          class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-indigo-200"
+        >
+          Your Skills
+        </h2>
+        <div class="space-y-4 sm:space-y-6">
           <div>
             <label class="block text-indigo-200 text-sm font-semibold mb-4"
               >Rate your proficiency in these skills (1-5):</label
@@ -257,7 +344,8 @@
                 <input
                   type="range"
                   id="problemSolving"
-                  name="skills.problemSolving"
+                  name="problemSolving"
+                  [(ngModel)]="formData.skills.problemSolving"
                   min="1"
                   max="5"
                   step="1"
@@ -277,7 +365,8 @@
                 <input
                   type="range"
                   id="communication"
-                  name="skills.communication"
+                  name="communication"
+                  [(ngModel)]="formData.skills.communication"
                   min="1"
                   max="5"
                   step="1"
@@ -295,7 +384,8 @@
                 <input
                   type="range"
                   id="teamwork"
-                  name="skills.teamwork"
+                  name="teamwork"
+                  [(ngModel)]="formData.skills.teamwork"
                   min="1"
                   max="5"
                   step="1"
@@ -313,7 +403,8 @@
                 <input
                   type="range"
                   id="leadership"
-                  name="skills.leadership"
+                  name="leadership"
+                  [(ngModel)]="formData.skills.leadership"
                   min="1"
                   max="5"
                   step="1"
@@ -336,11 +427,19 @@
             </label>
             <textarea
               id="proudProject"
-              name="skills.proudProject"
+              name="proudProject"
+              [(ngModel)]="formData.skills.proudProject"
               rows="3"
               class="shadow-sm border-2 border-gray-700 bg-gray-800 rounded-lg w-full py-3 px-4 text-gray-100 leading-tight focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 transition duration-200"
               placeholder="Project description and skills used"
             ></textarea>
+            <!-- Validation error for project description -->
+            <div
+              *ngIf="validationErrors['proudProject']"
+              class="mt-2 text-red-400 text-sm"
+            >
+              {{ validationErrors["proudProject"] }}
+            </div>
           </div>
         </div>
       </section>
@@ -348,9 +447,15 @@
 
     <!-- Step 3: Values -->
     <div id="step3" class="step-content" [class.hidden]="currentStep !== 3">
-      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
-        <h2 class="text-xl font-semibold mb-4 text-indigo-200">Your Values</h2>
-        <div class="space-y-6">
+      <section
+        class="bg-gray-800/50 p-4 sm:p-6 rounded-lg border border-gray-700"
+      >
+        <h2
+          class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-indigo-200"
+        >
+          Your Values
+        </h2>
+        <div class="space-y-4 sm:space-y-6">
           <div>
             <label class="block text-indigo-200 text-sm font-semibold mb-4"
               >How important are these values to you? (1-5):</label
@@ -365,7 +470,8 @@
                 <input
                   type="range"
                   id="value_autonomy"
-                  name="values.rankedWorkValues.autonomy"
+                  name="autonomy"
+                  [(ngModel)]="formData.values.rankedWorkValues.autonomy"
                   min="1"
                   max="5"
                   step="1"
@@ -385,7 +491,8 @@
                 <input
                   type="range"
                   id="value_collaboration"
-                  name="values.rankedWorkValues.collaboration"
+                  name="collaboration"
+                  [(ngModel)]="formData.values.rankedWorkValues.collaboration"
                   min="1"
                   max="5"
                   step="1"
@@ -405,7 +512,8 @@
                 <input
                   type="range"
                   id="value_creativity"
-                  name="values.rankedWorkValues.creativity"
+                  name="creativity"
+                  [(ngModel)]="formData.values.rankedWorkValues.creativity"
                   min="1"
                   max="5"
                   step="1"
@@ -425,7 +533,8 @@
                 <input
                   type="range"
                   id="value_stability"
-                  name="values.rankedWorkValues.stability"
+                  name="stability"
+                  [(ngModel)]="formData.values.rankedWorkValues.stability"
                   min="1"
                   max="5"
                   step="1"
@@ -445,7 +554,8 @@
                 <input
                   type="range"
                   id="value_highIncome"
-                  name="values.rankedWorkValues.highIncome"
+                  name="highIncome"
+                  [(ngModel)]="formData.values.rankedWorkValues.highIncome"
                   min="1"
                   max="5"
                   step="1"
@@ -464,11 +574,15 @@
 
     <!-- Step 4: Learning Style -->
     <div id="step4" class="step-content" [class.hidden]="currentStep !== 4">
-      <section class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
-        <h2 class="text-xl font-semibold mb-4 text-indigo-200">
+      <section
+        class="bg-gray-800/50 p-4 sm:p-6 rounded-lg border border-gray-700"
+      >
+        <h2
+          class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-indigo-200"
+        >
           Your Learning Style
         </h2>
-        <div class="space-y-6">
+        <div class="space-y-4 sm:space-y-6">
           <div>
             <label class="block text-indigo-200 text-sm font-semibold mb-4"
               >How do you prefer to learn? (Rate 1-5):</label
@@ -483,7 +597,8 @@
                 <input
                   type="range"
                   id="learning_reading"
-                  name="learningStyle.reading"
+                  name="reading"
+                  [(ngModel)]="formData.learningStyle.reading"
                   min="1"
                   max="5"
                   step="1"
@@ -503,7 +618,8 @@
                 <input
                   type="range"
                   id="learning_practical"
-                  name="learningStyle.practical"
+                  name="practical"
+                  [(ngModel)]="formData.learningStyle.practical"
                   min="1"
                   max="5"
                   step="1"
@@ -523,7 +639,8 @@
                 <input
                   type="range"
                   id="learning_visual"
-                  name="learningStyle.visual"
+                  name="visual"
+                  [(ngModel)]="formData.learningStyle.visual"
                   min="1"
                   max="5"
                   step="1"
@@ -543,7 +660,8 @@
                 <input
                   type="range"
                   id="learning_group"
-                  name="learningStyle.group"
+                  name="group"
+                  [(ngModel)]="formData.learningStyle.group"
                   min="1"
                   max="5"
                   step="1"
@@ -567,7 +685,8 @@
             <input
               type="range"
               id="comfortWithTechnicalDetail"
-              name="learningStyle.comfortWithTechnicalDetail"
+              name="comfortWithTechnicalDetail"
+              [(ngModel)]="formData.learningStyle.comfortWithTechnicalDetail"
               min="1"
               max="5"
               step="1"
@@ -583,11 +702,13 @@
     </div>
 
     <!-- Navigation Buttons -->
-    <div class="flex justify-between mt-8">
+    <div
+      class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-0 mt-6 sm:mt-8"
+    >
       <button
         type="button"
         id="prevBtn"
-        class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+        class="w-full sm:w-auto px-4 sm:px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
         [class.hidden]="currentStep === 1"
         (click)="previousStep()"
       >
@@ -596,7 +717,7 @@
       <button
         type="button"
         id="nextBtn"
-        class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
+        class="w-full sm:w-auto px-4 sm:px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200"
         [class.hidden]="currentStep === totalSteps"
         (click)="nextStep()"
       >
@@ -608,7 +729,7 @@
     <button
       type="submit"
       id="submitBtn"
-      class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform transition duration-200 hover:scale-[1.02]"
+      class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 transform transition duration-200 hover:scale-[1.02]"
       [class.hidden]="currentStep !== totalSteps"
     >
       Get Your Career Recommendations

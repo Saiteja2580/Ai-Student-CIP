@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Post,
-  UploadedFile,
-  UseInterceptors,
-  Injectable,
-  BadRequestException,
-} from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { Multer } from 'multer';
 import * as fs from 'fs';
 import { GeminiService } from 'src/gemini/gemini.service';
@@ -19,6 +12,8 @@ import { Model } from 'mongoose';
 import { CreateFileDto } from './dto/file-dto';
 import path from 'path';
 import { QuizResult, QuizResultSchema } from './schemas/QuizResult.schema';
+import { PromptTemplate } from '@langchain/core/prompts';
+import { QuizPrompt } from 'src/prompts/prompt';
 @Injectable()
 export class QuizService {
   createFile: CreateFileDto;
@@ -30,7 +25,12 @@ export class QuizService {
   loader: PDFLoader | DocxLoader;
 
   // -------------------------------------------Generating Quiz--------------------------------------
-  async generateQuiz(file: Multer.File, userId: string) {
+  async generateQuiz(
+    file: Multer.File,
+    userId: string,
+    topic: string,
+    difficulty: string,
+  ) {
     try {
       let extractedText: string;
       let fileSaved: boolean = false; // Flag to track if the file was saved
@@ -48,7 +48,11 @@ export class QuizService {
         fileSaved = true; // Set the flag to true because a new file was saved.
       }
 
-      const quiz = await this.generateQuizFromText(extractedText);
+      const quiz = await this.generateQuizFromText(
+        extractedText,
+        topic,
+        difficulty,
+      );
 
       if (fileSaved) {
         // Only save if the file was new
@@ -102,20 +106,24 @@ export class QuizService {
           : '';
   }
 
-  private async generateQuizFromText(extractedText: string) {
-    const prompt = `
-    Generate a quiz with intermediate difficulty level from the following text (whole text) with 10 questions. Format the output as JSON with:
-    - "topic": string (Main subject)
-    - "questions": array of objects, each containing:
-        - "question": string (Question text)
-        - "options": array of 4 strings (MCQ choices)
-        - "answer": string (Correct answer)
-    
-    Text:
-     ${'{text}'}    // Directly insert the extracted text here
-    `;
+  private async generateQuizFromText(
+    extractedText: string,
+    topic: string,
+    difficulty: string,
+  ) {
+    const prompt = PromptTemplate.fromTemplate(`
+    ${QuizPrompt}
+  `);
 
-    return await this.geminiSerice.generateResponse(prompt, extractedText);
+    const promptValue = await prompt.invoke({
+      extractedText: extractedText,
+      topic: topic,
+      difficulty: difficulty,
+    });
+
+    // console.log('Prompt Value', promptValue.value);
+
+    return await this.geminiSerice.generateResponse(promptValue.value);
   }
   // --------------------------------------------------------Submitting Quiz End Point----------------------------------------------
   async submitQuiz(id, quizData: QuizResultDto) {

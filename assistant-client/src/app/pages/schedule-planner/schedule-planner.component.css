@@ -5,6 +5,8 @@
   align-items: center;
   height: 100%;
   padding: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .toggle-buttons {
@@ -21,6 +23,12 @@ button {
   background-color: var(--accent-button);
   color: white;
   font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--accent-button-hover);
 }
 
 .active {
@@ -42,4 +50,50 @@ button {
   width: 100%;
   padding: 0.75rem;
   border-radius: 0.5rem;
+  background-color: var(--surface-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablet and smaller screens */
+@media screen and (max-width: 768px) {
+  .schedule-container {
+    padding: 0.25rem;
+  }
+
+  button {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  .schedule-content,
+  .schedule-list {
+    padding: 0.5rem;
+  }
+}
+
+/* Mobile screens */
+@media screen and (max-width: 480px) {
+  .schedule-container {
+    padding: 0.15rem;
+  }
+
+  .toggle-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  button {
+    width: 100%;
+    border-radius: 0.5rem !important;
+  }
+
+  .text-btn,
+  .form-btn {
+    border-radius: 0.5rem !important;
+  }
+
+  .schedule-content,
+  .schedule-list {
+    padding: 0.35rem;
+  }
 }

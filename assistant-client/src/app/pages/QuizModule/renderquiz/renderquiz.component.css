@@ -244,3 +244,135 @@ h2:hover {
     order: -1;
   }
 }
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .quiz-container {
+    max-width: 90%;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+  }
+
+  .quiz-title {
+    font-size: 1.8rem;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .quiz-container {
+    max-width: 95%;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .quiz-title {
+    font-size: 1.5rem;
+  }
+
+  .question-card {
+    padding: 1.2rem;
+  }
+
+  .question-text {
+    font-size: 1rem;
+  }
+
+  .option {
+    padding: 0.8rem;
+  }
+
+  .pagination-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .page-number {
+    width: 30px;
+    height: 30px;
+  }
+
+  .submit-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-container {
+    margin: 0.5rem;
+    padding: 0.8rem;
+  }
+
+  .quiz-title {
+    font-size: 1.3rem;
+  }
+
+  .question-card {
+    padding: 1rem;
+  }
+
+  .question-number {
+    font-size: 1rem;
+  }
+
+  .question-text {
+    font-size: 0.95rem;
+  }
+
+  .option {
+    padding: 0.7rem;
+    gap: 0.7rem;
+  }
+
+  .option-number {
+    min-width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+  }
+
+  .option-text {
+    font-size: 0.9rem;
+  }
+
+  .pagination-controls {
+    gap: 0.8rem;
+  }
+
+  .pagination-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .page-number {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+
+  .submit-button {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+  .quiz-container {
+    margin: 0.3rem;
+    padding: 0.6rem;
+  }
+
+  .page-numbers {
+    gap: 0.3rem;
+  }
+
+  .page-number {
+    width: 22px;
+    height: 22px;
+    font-size: 0.75rem;
+  }
+}

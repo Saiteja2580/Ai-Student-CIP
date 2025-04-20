@@ -5,6 +5,7 @@ import { GeminiService } from 'src/gemini/gemini.service';
 import { InjectModel } from '@nestjs/mongoose';
 import { Schedule } from './entities/schedule.entity';
 import { Model } from 'mongoose';
+import { SchedulePrompt } from 'src/prompts/prompt';
 
 @Injectable()
 export class ScheduleService {
@@ -14,7 +15,7 @@ export class ScheduleService {
   ) {}
 
   async createbyForm(createScheduleDto: CreateScheduleDto) {
-    console.log(createScheduleDto);
+    // console.log(createScheduleDto);
     let newSchedule = new this.scheduleModel(createScheduleDto);
     newSchedule = await newSchedule.save();
     return newSchedule;
@@ -22,21 +23,10 @@ export class ScheduleService {
 
   async createbyPrompt(userPrompt: string, userId: string) {
     const prompt = `
-  You are an AI assistant that extracts structured data from user input. Given a natural language prompt describing a schedule, extract the relevant details and return a JSON object in the following format:
-  category should be ['Meeting','Appointment','Personal','Work'] and Priority will be ['High','Medium','Low'] by default medium
+  ${SchedulePrompt}
 
-    {
-      "name": "string",
-      "date": "YYYY-MM-DD",
-      "time": "HH:mm",
-      "endTime": "HH:mm",
-      "category": "string",
-      "location": "string",
-      "priority": "string"
-    }
-
-    Prompt:
-      ${userPrompt}    // Directly insert the extracted text here
+  Now, process this input and return a JSON object in the same format:
+  ${userPrompt}
   `;
 
     const schedule = await this.geminiService.generateSchedule(prompt);
@@ -45,8 +35,8 @@ export class ScheduleService {
     return newSchedule;
   }
 
-  findAll() {
-    return `This action returns all schedule`;
+  async findAll() {
+    return await this.scheduleModel.find();
   }
 
   async findOne(id: string) {

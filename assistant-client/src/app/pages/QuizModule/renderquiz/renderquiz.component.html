@@ -1,5 +1,6 @@
+@if (quizResponse) {
 <div
-  *ngIf="quizResponse"
+  *ngIf="!isLoading; else spinner"
   class="quiz-container bg-gradient-to-br from-gray-900 to-gray-800"
 >
   <div class="quiz-header">
@@ -74,3 +75,8 @@
     <button (click)="onSubmit()" class="submit-button">Submit Quiz</button>
   </div>
 </div>
+}
+
+<ng-template #spinner>
+  <app-spinner #spinner></app-spinner>
+</ng-template>

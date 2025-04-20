@@ -32,11 +32,16 @@ export class QuizController {
       }),
     }),
   )
-  generateQuiz(@Param('id') id: string, @UploadedFile() file: Multer.File) {
-    console.log(file);
-    console.log(id);
+  generateQuiz(
+    @Param('id') id: string,
+    @UploadedFile() file: Multer.File,
+    @Body() body: { topic: string; difficulty: string },
+  ) {
+    // console.log(file);
+    // console.log(id);
+    // console.log(body);
 
-    return this.quizService.generateQuiz(file, id);
+    return this.quizService.generateQuiz(file, id, body.topic, body.difficulty);
   }
 
   @Post('submit-quiz/:id')

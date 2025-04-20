@@ -27,6 +27,8 @@ export class ScheduleController {
 
   @Post('add-schedule-text')
   createByPrompt(@Body(ValidationPipe) prompt: TextScheduleDto) {
+    
+
     return this.scheduleService.createbyPrompt(prompt.prompt, prompt.userId);
   }
 

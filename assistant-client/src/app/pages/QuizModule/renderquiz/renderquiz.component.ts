@@ -7,15 +7,18 @@ import {
   QuizResult,
 } from '../../../models/quiz.model';
 import { JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerComponent } from "../../../shared/spinner/spinner.component";
 
 @Component({
   selector: 'app-renderquiz',
-  imports: [NgIf, NgFor, NgClass],
+  imports: [NgIf, NgFor, NgClass, SpinnerComponent],
   templateUrl: './renderquiz.component.html',
   styleUrl: './renderquiz.component.css',
 })
 export class RenderquizComponent implements OnInit {
-  quizTime = 500;
+  isLoading = false;
+  spinnerService = inject(NgxSpinnerService);
   quizService = inject(QuizServiceService);
   quizResponse: QuizResponse | undefined;
   quizQuestions: QuizQuestion | any;
@@ -31,6 +34,7 @@ export class RenderquizComponent implements OnInit {
   totalPages: number = 0;
 
   ngOnInit(): void {
+    this.spinnerService.show();
     this.quizService.quizData$.subscribe((quizResponse) => {
       if (quizResponse) {
         this.quizResponse = quizResponse;
@@ -73,6 +77,7 @@ export class RenderquizComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isLoading = true;
     if (Object.keys(this.selectedAnswers).length < this.quizQuestions.length) {
       alert('Please answer all questions before submitting');
     } else {
@@ -94,6 +99,7 @@ export class RenderquizComponent implements OnInit {
       // -------------------------senidng quizresult to backemd----------------------------
       this.quizService.submitQuiz(this.quizResult).subscribe({
         next: (res: any) => {
+          this.isLoading = false;
           this.quizService.quizSubmitted();
           let quizId = res._id;
           console.log(res._id);
@@ -101,6 +107,7 @@ export class RenderquizComponent implements OnInit {
         },
         error: (err) => {
           alert(err.message);
+          this.isLoading = false;
         },
       });
     }

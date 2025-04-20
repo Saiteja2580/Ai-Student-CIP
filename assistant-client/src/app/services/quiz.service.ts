@@ -29,18 +29,16 @@ export class QuizServiceService {
 
   http = inject(HttpClient);
 
-  getQuizQuetsions(pdfFile: FormData) {
-    console.log(pdfFile);
+  getQuizQuetsions(formData: FormData) {
+    console.log('Form Data from quiz service', formData);
 
     return this.http.post(
       `${Constant.QUIZ.GENERATE_QUIZ_URL}/${this.userId}`,
-      pdfFile
+      formData
     );
   }
 
   submitQuiz(quizResult: QuizResult) {
-    
-
     return this.http.post(
       `${Constant.QUIZ.SUBMIT_QUIZ_URL}/${this.userId}`,
       quizResult
@@ -48,9 +46,7 @@ export class QuizServiceService {
   }
 
   getQuizById(id: string) {
-    return this.http.get(
-      `${Constant.QUIZ.QUIZ_BY_ID_URL}/${id}`
-    );
+    return this.http.get(`${Constant.QUIZ.QUIZ_BY_ID_URL}/${id}`);
   }
 
   quizSubmitted() {
