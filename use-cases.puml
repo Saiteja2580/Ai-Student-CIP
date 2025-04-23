@@ -1,0 +1,92 @@
+@startuml Use Cases
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecaseStyle roundbox
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+
+actor "User" as user
+
+rectangle "Career Intelligence Platform" {
+    ' Authentication Use Cases
+    usecase "Login/Register" as auth
+    usecase "Manage Profile" as profile
+    usecase "Reset Password" as reset
+
+    ' Career Development Use Cases
+    usecase "View Career Paths" as career
+    usecase "Get Career Recommendations" as recommendations
+    usecase "Track Career Progress" as progress
+    usecase "View Industry Insights" as insights
+
+    ' Task Management Use Cases
+    usecase "Create Tasks" as createTask
+    usecase "Manage Tasks" as manageTask
+    usecase "Set Task Priorities" as priorities
+    usecase "Track Task Progress" as taskProgress
+
+    ' Schedule Management Use Cases
+    usecase "Create Schedule" as createSchedule
+    usecase "Manage Schedule" as manageSchedule
+    usecase "Set Reminders" as reminders
+    usecase "View Calendar" as calendar
+
+    ' Quiz and Assessment Use Cases
+    usecase "Take Quizzes" as takeQuiz
+    usecase "View Results" as results
+    usecase "Get Performance Analytics" as analytics
+    usecase "Receive Feedback" as feedback
+
+    ' AI Guidance Use Cases
+    usecase "Get AI Guidance" as guidance
+    usecase "Ask Questions" as questions
+    usecase "Get Personalized Recommendations" as personalRec
+    usecase "Generate Learning Path" as learningPath
+}
+
+' User Relationships
+user --> auth
+user --> profile
+user --> career
+user --> recommendations
+user --> progress
+user --> insights
+user --> createTask
+user --> manageTask
+user --> priorities
+user --> taskProgress
+user --> createSchedule
+user --> manageSchedule
+user --> reminders
+user --> calendar
+user --> takeQuiz
+user --> results
+user --> analytics
+user --> feedback
+user --> guidance
+user --> questions
+user --> personalRec
+user --> learningPath
+
+' Include Relationships
+auth ..> reset : <<include>>
+manageTask ..> priorities : <<include>>
+manageTask ..> taskProgress : <<include>>
+manageSchedule ..> reminders : <<include>>
+manageSchedule ..> calendar : <<include>>
+takeQuiz ..> results : <<include>>
+results ..> analytics : <<include>>
+results ..> feedback : <<include>>
+guidance ..> personalRec : <<include>>
+guidance ..> learningPath : <<include>>
+
+' Extend Relationships
+career ..> insights : <<extend>>
+recommendations ..> personalRec : <<extend>>
+analytics ..> feedback : <<extend>>
+
+@enduml 

@@ -104,9 +104,10 @@ export class TaskService {
       });
   }
 
-  deleteTask(taskId: string) {
+  updateStatus(taskId: string, status: string) {
+    this.showSpinner();
     return this.http
-      .delete(`${Constant.TASK.DELETE_TASK_URL}/${taskId}`)
+      .patch(`${Constant.TASK.UPDATE_STATUS_URL}/${taskId}`, { status })
       .pipe(
         tap(() => this.getTaskById(this.userId)),
         finalize(() => this.hideSpinner())

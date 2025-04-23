@@ -36,7 +36,9 @@ export class ScheduleService {
 
   // ✅ Getter to access the schedules signal
   get schedules$() {
-    return this.schedules;
+    // console.log(this.schedules());
+
+    return this.schedules();
   }
 
   private showSpinner() {
@@ -56,11 +58,15 @@ export class ScheduleService {
 
     this.http
       .get(`${Constant.SCHEDULE.GET_SCHEDULE_URL}/${userId}`)
-      .pipe(
-        tap((res) => this.schedules.set(res as ScheduleResponse[])),
-        finalize(() => this.hideSpinner())
-      ) // Update signal
-      .subscribe({ error: (err) => alert(err.message) });
+      // .pipe(
+      //   tap((res) => this.schedules.set(res as ScheduleResponse[])),
+      //   finalize(() => this.hideSpinner())
+      // ) // Update signal
+      .subscribe({
+        next: (res) => this.schedules.set(res as ScheduleResponse[]),
+        error: (err) => alert(err.message),
+        complete: () => this.hideSpinner(),
+      });
   }
 
   // ✅ Add new schedule (via text) and update signal

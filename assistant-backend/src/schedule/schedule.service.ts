@@ -35,11 +35,8 @@ export class ScheduleService {
     return newSchedule;
   }
 
-  async findAll() {
-    return await this.scheduleModel.find();
-  }
 
-  async findOne(id: string) {
+  async findByUserId(id: string) {
     return await this.scheduleModel.find({
       userId: id,
     });

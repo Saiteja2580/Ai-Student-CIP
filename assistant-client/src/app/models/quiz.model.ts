@@ -48,6 +48,8 @@ export class QuizResult {
   totalQuestions: number;
   correctAnswers: number;
   percentage: number;
+  fileId: any;
+  createdAt: any;
 
   constructor(result: {
     topic: string;

@@ -84,6 +84,7 @@ export class DragfileComponent implements OnInit {
         const responsequiz = {
           filename: this.selectedFile?.name,
           ...this.quizResponse,
+          file: this.selectedFile,
         };
         console.log(responsequiz);
 

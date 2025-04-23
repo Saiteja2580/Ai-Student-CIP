@@ -1,0 +1,101 @@
+@startuml Project Architecture
+
+!define RECTANGLE class
+
+skinparam componentStyle rectangle
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam roundCorner 20
+skinparam shadowing false
+
+skinparam component {
+    BackgroundColor<<Frontend>> LightBlue
+    BackgroundColor<<Backend>> LightPink
+    BackgroundColor<<External>> LightYellow
+    BackgroundColor<<Details>> LightGreen
+    BorderColor<<Frontend>> Blue
+    BorderColor<<Backend>> Purple
+    BorderColor<<External>> Orange
+    BorderColor<<Details>> Green
+}
+
+package "Frontend - Angular Application" <<Frontend>> {
+    [UI Components] as UI
+    [Pages Module] as Pages
+    [Authentication Module] as Auth
+    [Services Layer] as Services
+    [Data Models] as Models
+    [Shared Components] as Shared
+
+    UI --> Pages
+    Pages --> Services
+    Auth --> Services
+    Services --> Models
+    Shared --> UI
+}
+
+package "Backend - NestJS Application" <<Backend>> {
+    [API Layer] as API
+    [Auth Module] as AuthModule
+    [Career Module] as CareerModule
+    [Task Module] as TaskModule
+    [Schedule Module] as ScheduleModule
+    [Quiz Module] as QuizModule
+    [Gemini Module] as GeminiModule
+    [Prompts Module] as PromptsModule
+
+    API --> AuthModule
+    API --> CareerModule
+    API --> TaskModule
+    API --> ScheduleModule
+    API --> QuizModule
+    API --> GeminiModule
+    API --> PromptsModule
+}
+
+package "External Services" <<External>> {
+    database "Database" as DB
+    [AI Services] as AI
+}
+
+package "Frontend Components" <<Details>> {
+    [Dashboard] as Dashboard
+    [Profile] as Profile
+    [Tasks] as Tasks
+    [Schedule] as Schedule
+    [Quiz] as Quiz
+    [Career] as Career
+
+    Pages --> Dashboard
+    Pages --> Profile
+    Pages --> Tasks
+    Pages --> Schedule
+    Pages --> Quiz
+    Pages --> Career
+}
+
+package "Backend Services" <<Details>> {
+    [User Authentication] as UserAuth
+    [Career Path] as CareerPath
+    [Task Management] as TaskMgmt
+    [Time Management] as TimeMgmt
+    [Assessments] as Assessment
+    [AI Integration] as AIIntegration
+    [Prompt Templates] as PromptTemplates
+
+    AuthModule --> UserAuth
+    CareerModule --> CareerPath
+    TaskModule --> TaskMgmt
+    ScheduleModule --> TimeMgmt
+    QuizModule --> Assessment
+    GeminiModule --> AIIntegration
+    PromptsModule --> PromptTemplates
+}
+
+Frontend --> Backend : HTTP/REST
+Backend --> DB : Data Persistence
+Backend --> AI : AI Integration
+
+@enduml 

@@ -3,8 +3,103 @@
   *ngIf="!isLoading; else spinner"
   class="quiz-container bg-gradient-to-br from-gray-900 to-gray-800"
 >
-  <div class="quiz-header">
+  <div class="quiz-header flex justify-between items-center">
     <h2 class="quiz-title">{{ quizResponse.topic }}</h2>
+    <div class="relative group">
+      <button
+        class="feedback-icon p-2 rounded-full hover:bg-gray-700 transition-colors"
+        (click)="showFeedbackModal = true"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 text-white"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+          />
+        </svg>
+      </button>
+      <div
+        class="absolute right-0 mt-2 w-64 p-2 bg-gray-800 text-white text-sm rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50"
+      >
+        <p class="text-gray-300">
+          Click here to provide feedback. If questions are too easy, you can
+          request to regenerate them with higher difficulty.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div
+    *ngIf="showFeedbackModal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+  >
+    <div class="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full mx-4">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-semibold text-white">Quiz Feedback</h3>
+        <button
+          (click)="showFeedbackModal = false"
+          class="text-gray-400 hover:text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <p class="text-white">Select the difficulty level?</p>
+        <div class="flex flex-col gap-3">
+          <label class="flex items-center space-x-3 text-white cursor-pointer">
+            <input
+              type="radio"
+              name="difficulty"
+              value="Medium"
+              [(ngModel)]="selectedDifficulty"
+              (change)="handleDifficultySelection('Medium')"
+              class="w-4 h-4 text-blue-600"
+            />
+            <span>Medium</span>
+          </label>
+          <label class="flex items-center space-x-3 text-white cursor-pointer">
+            <input
+              type="radio"
+              name="difficulty"
+              value="Hard"
+              [(ngModel)]="selectedDifficulty"
+              (change)="handleDifficultySelection('Hard')"
+              class="w-4 h-4 text-blue-600"
+            />
+            <span>Hard</span>
+          </label>
+        </div>
+
+        <button
+          (click)="regenerateQuestions()"
+          class="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
+          Regenerate Questions
+        </button>
+      </div>
+    </div>
   </div>
 
   <div class="questions-wrapper">

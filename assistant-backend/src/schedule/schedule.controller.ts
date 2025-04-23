@@ -27,19 +27,12 @@ export class ScheduleController {
 
   @Post('add-schedule-text')
   createByPrompt(@Body(ValidationPipe) prompt: TextScheduleDto) {
-    
-
     return this.scheduleService.createbyPrompt(prompt.prompt, prompt.userId);
   }
 
-  @Get()
-  findAll() {
-    return this.scheduleService.findAll();
-  }
-
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.scheduleService.findOne(id);
+  findByUserId(@Param('id') id: string) {
+    return this.scheduleService.findByUserId(id);
   }
 
   @Patch(':id')

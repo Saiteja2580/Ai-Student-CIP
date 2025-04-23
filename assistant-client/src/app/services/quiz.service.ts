@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, OnInit } from '@angular/core';
+import { inject, Injectable, OnInit, signal } from '@angular/core';
 import { Constant } from '../constants/Constant';
 import { QuizResult } from '../models/quiz.model';
 import { AuthService } from '@auth0/auth0-angular';
@@ -13,6 +13,14 @@ export class QuizServiceService {
   private quizDataSource = new BehaviorSubject<any>(null);
   quizData$ = this.quizDataSource.asObservable();
 
+  // Signal for total quiz attempts array
+  private totalQuizAttemptsSignal = signal<QuizResult[]>([]);
+
+  // Getter for total quiz attempts
+  get totalQuizAttempts() {
+    return this.totalQuizAttemptsSignal();
+  }
+
   setQuizData(data: any) {
     this.quizDataSource.next(data);
   }
@@ -23,11 +31,24 @@ export class QuizServiceService {
     this.authService.user$.subscribe((user) => {
       if (user) {
         this.userId = user.sub;
+        // Load quiz data when user is authenticated
+        this.totalQuizAttempted();
       }
     });
   }
 
   http = inject(HttpClient);
+
+  totalQuizAttempted() {
+    return this.http
+      .get<QuizResult[]>(
+        `${Constant.QUIZ.TOTAL_QUIZ_ATTEMPTED_URL}/${this.userId}`
+      )
+      .subscribe((response) => {
+        console.log('response', response);
+        this.totalQuizAttemptsSignal.set(response);
+      });
+  }
 
   getQuizQuetsions(formData: FormData) {
     console.log('Form Data from quiz service', formData);
@@ -39,6 +60,8 @@ export class QuizServiceService {
   }
 
   submitQuiz(quizResult: QuizResult) {
+    console.log('quizResult', quizResult);
+
     return this.http.post(
       `${Constant.QUIZ.SUBMIT_QUIZ_URL}/${this.userId}`,
       quizResult

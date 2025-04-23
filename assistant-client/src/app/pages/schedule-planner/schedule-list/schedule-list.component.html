@@ -28,8 +28,8 @@
     <div class="overflow-x-auto">
       <!-- Mobile View -->
       <div class="block sm:hidden">
-        @if (scheduleList) { @for (schedule of scheduleService.schedules$();
-        track $index) {
+        @if (scheduleList) { @for (schedule of scheduleService.schedules$; track
+        $index) {
         <div
           class="p-4 border-b border-gray-700 hover:bg-gray-700/50 transition-all duration-200"
         >
@@ -151,7 +151,7 @@
           </tr>
         </thead>
         <tbody class="bg-gray-800 divide-y divide-gray-700">
-          @if (scheduleList) { @for (schedule of scheduleService.schedules$();
+          @if (scheduleList) { @for (schedule of scheduleService.schedules$;
           track $index) {
           <tr class="hover:bg-gray-700/50 transition-all duration-200 group">
             <td

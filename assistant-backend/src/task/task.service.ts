@@ -21,19 +21,21 @@ export class TaskService {
     return createTaskDto;
   }
 
-  findAll() {
-    return `This action returns all task`;
-  }
-
-  async findOne(id: string) {
+  async getTaskByUserId(id: string) {
     return await this.taskModel.find({ userId: id });
-  }
-
-  update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
   }
 
   async remove(id: string) {
     return await this.taskModel.findByIdAndDelete(id);
+  }
+
+  async updateStatus(id: string, status: string) {
+    console.log(id, status);
+
+    return await this.taskModel.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true },
+    );
   }
 }

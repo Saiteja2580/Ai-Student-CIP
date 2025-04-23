@@ -12,7 +12,7 @@ export class TaskComponent {
   taskService = inject(TaskService);
   @Input({ required: true }) task!: TaskResponse;
 
-  onComplete(taskId: string) {
-    this.taskService.deleteTask(taskId);
+  onComplete(taskId: string, status: string) {
+    this.taskService.updateStatus(taskId, status);
   }
 }

@@ -17,6 +17,9 @@ export class Task extends Document {
 
   @Prop({ type: Date, default: Date.now })
   createdAt: Date = new Date();
+
+  @Prop({ type: String, default: 'pending' })
+  status: string;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

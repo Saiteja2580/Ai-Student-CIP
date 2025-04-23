@@ -6,6 +6,7 @@ export interface TaskResponse {
   dueDate: string;
   userId: string;
   __v: number;
+  status: string;
 }
 
 export interface TaskData {

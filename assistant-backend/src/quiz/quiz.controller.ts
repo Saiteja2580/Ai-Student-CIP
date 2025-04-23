@@ -58,4 +58,9 @@ export class QuizController {
   getResultById(@Param('id') id: string) {
     return this.quizService.getQuizById(id);
   }
+
+  @Get('getQuizByUserId/:id')
+  getQuizByUserId(@Param('id') id: string) {
+    return this.quizService.getQuizByUserId(id);
+  }
 }

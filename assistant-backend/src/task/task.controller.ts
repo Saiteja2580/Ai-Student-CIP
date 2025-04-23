@@ -23,23 +23,19 @@ export class TaskController {
     return this.taskService.create(createTaskDto);
   }
 
-  @Get()
-  findAll() {
-    return this.taskService.findAll();
-  }
-
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.taskService.findOne(id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.taskService.update(+id, updateTaskDto);
+  getTaskByUserId(@Param('id') id: string) {
+    return this.taskService.getTaskByUserId(id);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.taskService.remove(id);
+  }
+
+  @Patch(':id')
+  updateStatus(@Param('id') id: string, @Body() status: { status: string }) {
+    console.log(status.status);
+    return this.taskService.updateStatus(id, status.status);
   }
 }

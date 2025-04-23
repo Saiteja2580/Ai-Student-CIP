@@ -150,4 +150,11 @@ export class QuizService {
     const quizResult = await this.quizModel.findById(id);
     return quizResult;
   }
+
+  async getQuizByUserId(id: string) {
+    const quizResult = await this.quizModel
+      .find({ userId: id })
+      .populate('fileId');
+    return quizResult;
+  }
 }
