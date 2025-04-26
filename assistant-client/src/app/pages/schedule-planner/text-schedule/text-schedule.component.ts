@@ -3,7 +3,6 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { ScheduleService } from '../../../services/schedule.service';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-text-schedule',

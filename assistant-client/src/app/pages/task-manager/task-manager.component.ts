@@ -3,7 +3,6 @@ import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { AuthService } from '@auth0/auth0-angular';
 import { TaskService } from '../../services/task.service';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-manager',
@@ -12,11 +11,13 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './task-manager.component.css',
 })
 export class TaskManagerComponent {
+  authService = inject(AuthService);
+  taskService = inject(TaskService);
+
   tasks: any = [];
   addTask = false;
   userName!: string;
-  authService = inject(AuthService);
-  taskService = inject(TaskService);
+
   onAddTask() {
     this.addTask = true;
   }

@@ -1,7 +1,9 @@
-import { Controller, Post, Body, Get, Param } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, UseGuards } from '@nestjs/common';
 import { CareerService } from './career.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('career')
+@UseGuards(AuthGuard)
 export class CareerController {
   constructor(private readonly careerService: CareerService) {}
 
@@ -18,5 +20,10 @@ export class CareerController {
   @Get('history/:userId')
   async getChatHistory(@Param('userId') userId: string) {
     return await this.careerService.getChatHistory(userId);
+  }
+
+  @Get('roadmap/:topic')
+  async getRoadmap(@Param('topic') topic: string) {
+    return await this.careerService.getRoadmap(topic);
   }
 }

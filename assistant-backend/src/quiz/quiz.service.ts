@@ -1,17 +1,14 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { Multer } from 'multer';
-import * as fs from 'fs';
 import { GeminiService } from 'src/gemini/gemini.service';
 import { QuizResultDto } from './dto/quiz-result.dto';
-import * as pdfParse from 'pdf-parse';
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
 import { DocxLoader } from '@langchain/community/document_loaders/fs/docx';
 import { InjectModel } from '@nestjs/mongoose';
 import { File } from './schemas/File.schema';
 import { Model } from 'mongoose';
 import { CreateFileDto } from './dto/file-dto';
-import path from 'path';
-import { QuizResult, QuizResultSchema } from './schemas/QuizResult.schema';
+import { QuizResult } from './schemas/QuizResult.schema';
 import { PromptTemplate } from '@langchain/core/prompts';
 import { QuizPrompt } from 'src/prompts/prompt';
 @Injectable()

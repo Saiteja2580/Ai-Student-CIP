@@ -1,4 +1,4 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CareerService } from '../../../services/career.service';
@@ -18,11 +18,12 @@ interface ChatMessage {
   standalone: true,
 })
 export class AichatComponent {
+  careerService = inject(CareerService);
+
   message = '';
   question = '';
   messages: ChatMessage[] = [];
   isTyping = false;
-  careerService = inject(CareerService);
 
   constructor() {
     // Add initial bot message

@@ -11,12 +11,12 @@ import { finalize, tap } from 'rxjs';
 })
 export class TaskService {
   http = inject(HttpClient);
-
-  tasks = signal<TaskResponse[]>([]);
-  isloading = signal<boolean>(false);
   authService = inject(AuthService);
   spinnerService = inject(NgxSpinnerService);
+
   userId!: string;
+  tasks = signal<TaskResponse[]>([]);
+  isloading = signal<boolean>(false);
 
   constructor() {
     this.authService.user$.subscribe((user) => {

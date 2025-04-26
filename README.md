@@ -4,30 +4,34 @@ A comprehensive AI Student Assistant and Task Management platform built with Ang
 
 ## 🚀 Features
 
-### Career Assessment
+### Dashboard
 
-- Multi-step career assessment questionnaire
-- Interest evaluation
-- Skills assessment
-- Values alignment
-- Learning style analysis
-- resource recommendations
+- Dashboard which displays recent schedules tasks and quizzes
+- displays total no of quizzes,tasks,schedules created by specific user
+
+### Career Guidance CHatbot and Career Roadmap Generator
+
+- Can ask various questions related to career and study to chatbot
+- Generate roadmaps based on the career path entered by user
 
 ### Task Management
 
-- Task creation and tracking
-- Task categorization
-- Priority management
+- Task creation
+- Tracks Completed and pending tasks
 
 ### Schedule Management
 
-- Event scheduling
-- Time management tools
+- can create schedules
+- can update and delete schedules
+- schedule categorization
+- can create schedule using a prompt of form based approach
 
 ### Quiz System
 
 - Interactive quizzes
 - Quiz Genrated From PDFs
+- can regenerate questions if user feels currrent questions are easy
+- and result is shown with no of rigt answers and the total percentage
 
 ## 🛠️ Technology Stack
 
@@ -36,8 +40,6 @@ A comprehensive AI Student Assistant and Task Management platform built with Ang
 - Angular 17
 - TailwindCSS
 - TypeScript
-- Angular Material
-- RxJS
 
 ### Backend (assistant-backend)
 
@@ -46,10 +48,6 @@ A comprehensive AI Student Assistant and Task Management platform built with Ang
 - MongoDB
 - Auth0 Authentication
 - Gemini AI Integration
-
-## 📁 Project Structure
-
-### Frontend Structure
 
 ## 🚀 Getting Started
 

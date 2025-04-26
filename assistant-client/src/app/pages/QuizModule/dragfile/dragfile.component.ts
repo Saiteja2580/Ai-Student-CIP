@@ -5,11 +5,7 @@ import { ToasterService } from '../../../services/toaster.service';
 import { QuizServiceService } from '../../../services/quiz.service';
 import { QuizResponse } from '../../../models/quiz.model';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
-import {
-  NgxSpinnerComponent,
-  NgxSpinnerModule,
-  NgxSpinnerService,
-} from 'ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -20,12 +16,14 @@ import { NgIf } from '@angular/common';
 })
 export class DragfileComponent implements OnInit {
   spinnerService = inject(NgxSpinnerService);
-  isLoading = false;
-  isDragover = false;
-  router = inject(Router);
-  selectedFile: File | null = null;
   toaster: ToasterService = inject(ToasterService);
   quizService = inject(QuizServiceService);
+  router = inject(Router);
+
+  isLoading = false;
+  isDragover = false;
+
+  selectedFile: File | null = null;
   quizResponse: QuizResponse | undefined;
   topicName: string = '';
   difficultyLevel: string = 'medium';

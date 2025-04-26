@@ -7,9 +7,6 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { SpinnerComponent } from '../../shared/spinner/spinner.component';
-import { NgxSpinnerComponent, NgxSpinnerModule } from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
 import { ToasterService } from '../../services/toaster.service';
 
 @Component({

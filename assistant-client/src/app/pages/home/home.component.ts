@@ -21,12 +21,14 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  isCollapsed = true;
-  isLoading = false;
   router = inject(Router);
   spinnerService = inject(NgxSpinnerService);
   auth = inject(AuthService);
   toaster = inject(ToasterService);
+
+  isCollapsed = true;
+  isLoading = false;
+
   isHidden: boolean = false;
   showScrollTop = false;
 

@@ -3,6 +3,8 @@ import { GeminiService } from '../gemini/gemini.service';
 import { InjectModel } from '@nestjs/mongoose';
 import { ChatHistory } from './schemas/chat-history.schema';
 import { Model } from 'mongoose';
+import { PromptTemplate } from '@langchain/core/prompts';
+import { RoadmapPrompt } from 'src/prompts/prompt';
 
 @Injectable()
 export class CareerService {
@@ -37,5 +39,17 @@ export class CareerService {
 
   async getChatHistory(userId: string) {
     return await this.chatHistoryModel.find({ userId }).sort({ createdAt: -1 });
+  }
+
+  async getRoadmap(topicName: string) {
+    try {
+      const promptTemplate = RoadmapPrompt.replace('{topic}', topicName);
+      console.log(promptTemplate);
+      // Use the new generateRoadmap method from GeminiService
+      return await this.geminiService.generateRoadmap(promptTemplate);
+    } catch (error) {
+      console.error('Error generating roadmap:', error);
+      throw new Error('Failed to generate roadmap. Please try again.');
+    }
   }
 }

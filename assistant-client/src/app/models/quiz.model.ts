@@ -1,14 +1,4 @@
-// export class QuizForm {
-//   topicName: string;
-//   difficulty: string;
-//   type: string;
 
-//   constructor() {
-//     this.topicName = '';
-//     this.difficulty = '';
-//     this.type = '';
-//   }
-// }
 
 export class QuizQuestion {
   question: string;
@@ -31,16 +21,6 @@ export class QuizResponse {
     this.questions = Array.from({ length: 5 }, () => new QuizQuestion());
   }
 }
-
-// export class QuizData {
-//   topicName: string;
-//   answers: string[];
-
-//   constructor() {
-//     this.topicName = '';
-//     this.answers = new Array(10);
-//   }
-// }
 
 export class QuizResult {
   topic: string;

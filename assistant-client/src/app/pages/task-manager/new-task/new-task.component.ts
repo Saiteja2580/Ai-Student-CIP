@@ -11,14 +11,14 @@ import { TaskService } from '../../../services/task.service';
   styleUrl: './new-task.component.css',
 })
 export class NewTaskComponent {
+  taskService = inject(TaskService);
+
   taskData: TaskData = {
     userId: '',
     title: '',
     summary: '',
     dueDate: '',
   };
-
-  taskService = inject(TaskService);
 
   @Output() closeForm = new EventEmitter<boolean>(true);
 

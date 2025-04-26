@@ -1,26 +1,31 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuizServiceService } from '../../../services/quiz.service';
-import { NgClass, NgIf } from '@angular/common';
+import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-dashboard',
-  imports: [],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
+  selector: 'app-results',
+  imports: [SpinnerComponent, NgIf],
+  templateUrl: './results.component.html',
+  styleUrl: './results.component.css',
 })
-export class DashboardComponent implements OnInit {
+export class ResultsComponent implements OnInit {
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+  quizService = inject(QuizServiceService);
+  spinnerService = inject(NgxSpinnerService);
+
+  isLoading = false;
   quizId: any;
   quizResult: any;
-
-  route = inject(ActivatedRoute);
-  router = inject(Router)
-  quizService = inject(QuizServiceService);
 
   feedbackMessage: string = '';
   scoreColor: string = '';
 
   ngOnInit(): void {
+    this.spinnerService.show();
     this.route.paramMap.subscribe((params) => {
       this.quizId = params.get('id');
       console.log('Quiz ID:', this.quizId);
@@ -32,10 +37,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getQuizById() {
+    this.isLoading = true;
     this.quizService.getQuizById(this.quizId).subscribe({
       next: (res: any) => {
         this.quizResult = res;
         console.log(this.quizResult);
+        this.isLoading = false;
       },
       error: (err) => {
         alert(err.message);

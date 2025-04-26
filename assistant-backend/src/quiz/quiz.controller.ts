@@ -10,7 +10,6 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { diskStorage } from 'multer';
-import { GenerateQuizDto } from './dto/generate-quiz.dto';
 import { Multer } from 'multer';
 
 import { QuizService } from './quiz.service';

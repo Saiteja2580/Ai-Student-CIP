@@ -3,9 +3,10 @@
     <button (click)="onAddTask()">Add Task</button>
   </main>
 
-  @for (task of taskService.taskList$; track $index) {
+  @for (task of taskService.taskList$; track $index) { @if (task.status ===
+  'pending') {
   <app-task [task]="task"></app-task>
-  } @if (addTask) {
+  } } @if (addTask) {
   <div class="add-task">
     <app-new-task (closeForm)="onCloseForm($event)"></app-new-task>
   </div>

@@ -3,10 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { StudentLayoutComponent } from './pages/student-layout/student-layout.component';
 import { SchedulePlannerComponent } from './pages/schedule-planner/schedule-planner.component';
 import { TaskManagerComponent } from './pages/task-manager/task-manager.component';
-
-import { PerformAnalyzerComponent } from './pages/perform-analyzer/perform-analyzer.component';
-import { CareerComponent } from './pages/career/career.component';
-import { ResourceComponent } from './pages/resource/resource.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { authGuard } from './services/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ErrorComponent } from './pages/error/error.component';
@@ -46,12 +43,9 @@ export const routes: Routes = [
       },
       {
         path: 'performance',
-        component: PerformAnalyzerComponent,
+        component: DashboardComponent,
       },
-      {
-        path: 'resource',
-        component: ResourceComponent,
-      },
+
       {
         path: 'career',
         children: CareerRoutes,

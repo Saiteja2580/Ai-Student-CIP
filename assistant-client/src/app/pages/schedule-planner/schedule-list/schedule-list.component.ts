@@ -1,11 +1,4 @@
-import {
-  Component,
-  effect,
-  inject,
-  OnInit,
-  output,
-  signal,
-} from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { ScheduleService } from '../../../services/schedule.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { ScheduleResponse } from '../../../models/schedule.model';
@@ -17,12 +10,13 @@ import { ScheduleResponse } from '../../../models/schedule.model';
   styleUrl: './schedule-list.component.css',
 })
 export class ScheduleListComponent {
+  authService = inject(AuthService);
+  scheduleService = inject(ScheduleService);
+
   scheduleList: any = [];
   scheduleEmitter = output<ScheduleResponse>();
 
   userId!: string;
-  authService = inject(AuthService);
-  scheduleService = inject(ScheduleService);
 
   constructor() {
     this.authService.user$.subscribe((user) => {

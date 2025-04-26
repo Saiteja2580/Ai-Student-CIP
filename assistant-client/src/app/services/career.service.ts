@@ -10,6 +10,7 @@ import { marked } from 'marked';
 export class CareerService {
   authService = inject(AuthService);
   userId: any;
+  
   constructor() {
     this.authService.user$.subscribe((user) => {
       if (user) {
@@ -34,5 +35,9 @@ export class CareerService {
     return this.http.get(
       `${Constant.CAREER.GET_CHAT_HISTORY_URL}/${this.userId}`
     );
+  }
+
+  getRoadmap(topic: string) {
+    return this.http.get(`${Constant.CAREER.GET_ROADMAP_URL}/${topic}`);
   }
 }

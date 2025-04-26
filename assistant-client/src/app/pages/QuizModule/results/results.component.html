@@ -1,4 +1,7 @@
-<div class="score-card bg-gradient-to-br from-gray-900 to-gray-800">
+<div
+  class="score-card bg-gradient-to-br from-gray-900 to-gray-800"
+  *ngIf="!isLoading; else spinner"
+>
   <div class="score-header">
     <i class="fas fa-trophy trophy-icon"></i>
     <h2 class="score-title">Quiz Results</h2>
@@ -44,3 +47,7 @@
     </button>
   </div>
 </div>
+
+<ng-template #spinner>
+  <app-spinner #spinner></app-spinner>
+</ng-template>

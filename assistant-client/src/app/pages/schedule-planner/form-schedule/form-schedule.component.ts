@@ -7,7 +7,7 @@ import {
 } from '../../../models/schedule.model';
 import { ScheduleService } from '../../../services/schedule.service';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
-import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -17,10 +17,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './form-schedule.component.css',
 })
 export class FormScheduleComponent {
-  scheduleService = inject(ScheduleService);
-  @Input({ required: true }) editSchedule!: ScheduleResponse;
   isEditMode = false;
+
+  @Input({ required: true }) editSchedule!: ScheduleResponse;
+
   spinnerService = inject(NgxSpinnerService);
+  scheduleService = inject(ScheduleService);
 
   newSchedule: NewSchedule = {
     name: '',

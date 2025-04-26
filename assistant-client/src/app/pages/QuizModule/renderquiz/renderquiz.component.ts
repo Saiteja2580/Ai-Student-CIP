@@ -6,7 +6,7 @@ import {
   QuizResponse,
   QuizResult,
 } from '../../../models/quiz.model';
-import { JsonPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpinnerComponent } from '../../../shared/spinner/spinner.component';
 import { FormsModule } from '@angular/forms';
@@ -18,19 +18,21 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './renderquiz.component.css',
 })
 export class RenderquizComponent implements OnInit {
-  isLoading = false;
   spinnerService = inject(NgxSpinnerService);
   quizService = inject(QuizServiceService);
+  router = inject(Router);
+
+  isLoading = false;
+  file: File | null = null;
+  showFeedbackModal: boolean = false;
+  selectedDifficulty: string = '';
+  selectedAnswers: { [key: number]: string } = {};
+
   quizResponse: QuizResponse | undefined;
   quizQuestions: QuizQuestion | any;
   quizResult: QuizResult | any;
   filename: string | any;
   quizScore: number = 0;
-  router = inject(Router);
-  selectedAnswers: { [key: number]: string } = {};
-  file: File | null = null;
-  showFeedbackModal: boolean = false;
-  selectedDifficulty: string = '';
 
   // Pagination properties
   currentPage: number = 1;

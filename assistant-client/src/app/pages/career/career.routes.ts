@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { CareerComponent } from './career.component';
-import { AssessmentComponent } from './assessment/assessment.component';
-import { ResultComponent } from './result/result.component';
+import { AssessmentComponent } from './roadmap/roadmap.component';
 import { AichatComponent } from './aichat/aichat.component';
 
 export const CareerRoutes: Routes = [
@@ -21,10 +20,6 @@ export const CareerRoutes: Routes = [
       {
         path: 'chat',
         component: AichatComponent,
-      },
-      {
-        path: 'result',
-        component: ResultComponent,
       },
     ],
   },

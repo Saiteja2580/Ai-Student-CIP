@@ -1,16 +1,17 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { ScheduleService } from '../../services/schedule.service';
 import { QuizServiceService } from '../../services/quiz.service';
 import { DatePipe, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-perform-analyzer',
+  selector: 'app-dashboard',
+  standalone: true,
   imports: [DatePipe, NgClass],
-  templateUrl: './perform-analyzer.component.html',
-  styleUrl: './perform-analyzer.component.css',
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css',
 })
-export class PerformAnalyzerComponent {
+export class DashboardComponent {
   taskService = inject(TaskService);
   scheduleService = inject(ScheduleService);
   quizService = inject(QuizServiceService);

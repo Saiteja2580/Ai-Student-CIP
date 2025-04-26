@@ -25,5 +25,6 @@ export const Constant = {
   CAREER: {
     GET_QUESTION_RESPONSE_URL: `${environment.apiBaseUrl}/career/ask`,
     GET_CHAT_HISTORY_URL: `${environment.apiBaseUrl}/career/history`,
+    GET_ROADMAP_URL: `${environment.apiBaseUrl}/career/roadmap`,
   },
 };
