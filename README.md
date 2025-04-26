@@ -1,4 +1,4 @@
-# Career Intelligence Platform (CIP)
+# AI Student Assistant and Task Management (CIP)
 
 A comprehensive AI Student Assistant and Task Management platform built with Angular and NestJS.
 
