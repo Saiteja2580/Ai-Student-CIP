@@ -21,7 +21,7 @@ import { CareerModule } from './career/career.module';
     }),
     GeminiModule,
     AuthModule,
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017/Learnpro'),
+    MongooseModule.forRoot('mongodb+srv://saitejassp2580:Saiteja1964@cluster0.lxqpi9w.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'),
     ScheduleModule,
     TaskModule,
     CareerModule,
