@@ -6,7 +6,7 @@
     "start": "ng serve",
     "dev:client": "ng serve",
     "dev:server": "nodemon backend/app.js",
-    "build": "ng build",
+    "build": "ng build",  
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

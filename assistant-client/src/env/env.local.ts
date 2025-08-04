@@ -2,9 +2,9 @@ export const environment = {
   production: false,
   apiBaseUrl: 'https://ai-student-cip.onrender.com/api',
   auth: {
-    domain: 'dev-zizcs5o7lxt4w3ao.us.auth0.com',
-    clientId: 'rq7zfDLw9F4b5Ky93tpJRK0ZhmEiQyXF',
+    domain: 'dev-qe434kssd2p0je4b.us.auth0.com',
+    clientId: 's0hm92FAlA9lgrHSj72I4RgtHMEfUMRg',
     redirect_uri: window.location.origin,
-    audience: 'Learnpro Api From Auth0',
+    audience: 'https://ai-student-cip.onrender.com',
   },
 };
